@@ -92,7 +92,7 @@ namespace Andi
 	template<typename Type>
 	void Vector<Type>::pop_back()
 	{
-		Type* temp = new T[--_size];
+		Type* temp = new Type[--_size];
 		for (size_t t = 0; t < this->_size; ++t)
 			temp[t] = this->data[t];
 		delete[] this->data;
@@ -103,7 +103,7 @@ namespace Andi
 	{
 		if (pos < 1 || pos > this->_size)
 			return;
-		T* temp = new T[--_size];
+		Type* temp = new Type[--_size];
 		for (size_t t = 0; t < pos - 1; ++t)
 			temp[t] = this->data[t];
 		for (size_t t = pos - 1; t < this->_size; ++t)
@@ -156,7 +156,7 @@ namespace Andi
 		if (this == &vec)
 			return *this;
 		this->_size = vec.size();
-		this->data = new T[this->_size];
+		this->data = new Type[this->_size];
 		for (size_t t = 0; t < this->_size; ++t)
 			this->data[t] = vec.at(t);
 	}

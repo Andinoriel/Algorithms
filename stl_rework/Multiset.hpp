@@ -36,7 +36,7 @@ namespace Andi
 		void insert(Type const& value);
 		bool empty() const;
 		void erase(size_t pos);
-		void size_() const;
+		size_t size_() const;
 		void clear();
 		void swap(Multiset& multiset);
 		Type* const find(Type const& key) const; //return first finding value
@@ -73,7 +73,7 @@ namespace Andi
 		this->size = multiset();
 		this->data = new Type[this->size];
 		for (size_t t = 0; t < this->size; ++t)
-			this->data[t] = set[t];
+			this->data[t] = multiset[t];
 	}
 	template <typename Type, typename Comparator>
 	Multiset<Type, Comparator>::Multiset(Comparator const& comparator)
@@ -122,6 +122,11 @@ namespace Andi
 			temp[t] = this->data[t + 1];
 		delete[] this->data;
 		this->data = temp;
+	}
+	template<typename Type, typename Comparator>
+	size_t Multiset<Type, Comparator>::size_() const
+	{
+		return this->size;
 	}
 	template <typename Type, typename Comparator>
 	void Multiset<Type, Comparator>::clear()
@@ -173,7 +178,7 @@ namespace Andi
 	template <typename __Type, typename __Comparator>
 	std::ostream& operator<<(std::ostream& os, Multiset<__Type, __Comparator> const& multiset)
 	{
-		for (size_t t = 0; t < set.size; ++t)
+		for (size_t t = 0; t < multiset.size; ++t)
 			os << set.data[t] << " ";
 		os << "\n";
 		return os;
