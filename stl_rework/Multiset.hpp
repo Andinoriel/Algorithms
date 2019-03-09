@@ -9,7 +9,7 @@
 
 namespace Andi
 {
-	template <typename Type, typename Comparator = std::less<Type>>
+	template <typename Type, typename Comparator = std::less<>>
 	class Multiset
 	{
 	private:
@@ -26,7 +26,7 @@ namespace Andi
 		} _NO_CHANGE;
 	public:
 		Multiset();
-		template <typename Right_Comparator = std::less<Type>>
+		template <typename Right_Comparator = std::less<>>
 		Multiset(Multiset<Type, Right_Comparator> const& set);
 		//Construct only for lambda pred;
 		//Use std::function<bool(Type, Type)>
@@ -42,7 +42,7 @@ namespace Andi
 		Type* const find(Type const& key) const; //return first finding value
 
 		Type operator[](size_t pos) const;
-		template <typename Right_Comparator = std::less<Type>>
+		template <typename Right_Comparator = std::less<>>
 		Multiset<Type, Comparator>& operator=(Multiset<Type, Right_Comparator>& right);
 		template <typename Right_Comparator>
 		inline Multiset<Type, _NO_CHANGE>& operator+(Multiset<Type, Right_Comparator> const& right)
@@ -56,7 +56,7 @@ namespace Andi
 		}
 		//declaration inside for _NO_CHANGE visibility
 
-		template <typename __Type, typename __Comparator = std::less<__Type>>
+		template <typename __Type, typename __Comparator = std::less<>>
 		friend std::ostream& operator<<(std::ostream& os, Multiset<__Type, __Comparator> const& multiset);
 	};
 
@@ -179,7 +179,7 @@ namespace Andi
 	std::ostream& operator<<(std::ostream& os, Multiset<__Type, __Comparator> const& multiset)
 	{
 		for (size_t t = 0; t < multiset.size; ++t)
-			os << set.data[t] << " ";
+			os << multiset.data[t] << " ";
 		os << "\n";
 		return os;
 	}

@@ -8,7 +8,7 @@
 
 namespace Andi
 {
-	template <typename Type, typename Comparator = std::less<Type>>
+	template <typename Type, typename Comparator = std::less<>>
 	class Set
 	{
 	private:
@@ -24,9 +24,10 @@ namespace Andi
 			}
 		} _NO_CHANGE;
 
+		//проверка на наличие компаратора для Type
 	public:
 		Set();
-		template <typename Right_Comparator = std::less<Type>>
+		template <typename Right_Comparator = std::less<>>
 		Set(Set<Type, Right_Comparator> const &set);
 		//Construct only for lambda pred;
 		//Use std::function<bool(Type, Type)>
@@ -42,7 +43,7 @@ namespace Andi
 
 		Type operator[](size_t pos) const;
 		size_t operator()() const;
-		template <typename Right_Comparator = std::less<Type>>
+		template <typename Right_Comparator = std::less<>>
 		Set<Type, Comparator> &operator=(Set<Type, Right_Comparator> &right);
 		template <typename Right_Comparator>
 		inline Set<Type, _NO_CHANGE> &operator+(Set<Type, Right_Comparator> const &right)
@@ -56,7 +57,7 @@ namespace Andi
 		}
 		//declaration inside for _NO_CHANGE visibility
 
-		template <typename __Type, typename __Comparator = std::less<__Type>>
+		template <typename __Type, typename __Comparator = std::less<>>
 		friend std::ostream &operator<<(std::ostream &os, Set<__Type, __Comparator> const &set);
 	};
 
