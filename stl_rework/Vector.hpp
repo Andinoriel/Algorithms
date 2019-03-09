@@ -1,87 +1,87 @@
 #pragma once
-#ifndef _VECTOR_
-#define _VECTOR_
+#ifndef __VECTOR__
+#define __VECTOR__
 
 #include <iostream>
 
 namespace Andi
 {
-	template <typename T>
+	template <typename Type>
 	class Vector
 	{
 	private:
-		T* data;
+		Type* data;
 		size_t _size;
 	public:
 		Vector();
-		Vector(Vector<T> const& vec);
+		Vector(Vector<Type> const& vec);
 		~Vector();
 
 		bool empty() const;
-		T at(size_t pos) const;
+		Type at(size_t pos) const;
 		size_t size() const;
-		void push_back(T const& value);
+		void push_back(Type const& value);
 		void pop_back();
 		void erase(size_t pos);
-		void insert(size_t pos, T const& value);
+		void insert(size_t pos, Type const& value);
 		void reverse();
-		T front() const;
-		T back() const;
+		Type front() const;
+		Type back() const;
 
-		T operator[](size_t);
-		Vector<T>& operator=(Vector<T> const& vec);
-		template<typename Type>
-		friend std::ostream& operator<<(std::ostream&, Vector<Type> const&);
-		template<typename Type>
-		friend bool operator==(Vector<Type> const&, Vector<Type> const&);
-		template<typename Type>
-		friend bool operator!=(Vector<Type> const&, Vector<Type> const&);
+		Type operator[](size_t);
+		Vector<Type>& operator=(Vector<Type> const& vec);
+		template<typename __Type>
+		friend std::ostream& operator<<(std::ostream&, Vector<__Type> const&);
+		template<typename __Type>
+		friend bool operator==(Vector<Type> const&, Vector<__Type> const&);
+		template<typename __Type>
+		friend bool operator!=(Vector<Type> const&, Vector<__Type> const&);
 	};
-	template<typename T>
-	Vector<T>::Vector()
+	template<typename Type>
+	Vector<Type>::Vector()
 	{
 		this->_size = 0;
 	}
-	template<typename T>
-	Vector<T>::Vector(Vector<T> const& vec)
+	template<typename Type>
+	Vector<Type>::Vector(Vector<Type> const& vec)
 	{
 		this->_size = vec.size();
-		this->data = new T[this->_size];
+		this->data = new Type[this->_size];
 		for (size_t t = 0; t < this->_size; ++t)
 			this->data[t] = vec.at(t);
 	}
-	template<typename T>
-	Vector<T>::~Vector()
+	template<typename Type>
+	Vector<Type>::~Vector()
 	{
 		delete[] this->data;
 	}
 
-	template<typename T>
-	bool Vector<T>::empty() const
+	template<typename Type>
+	bool Vector<Type>::empty() const
 	{
 		return this->_size == 0 ? true : false;
 	}
-	template<typename T>
-	T Vector<T>::at(size_t pos) const
+	template<typename Type>
+	Type Vector<Type>::at(size_t pos) const
 	{
 		return this->data[pos];
 	}
-	template<typename T>
-	size_t Vector<T>::size() const
+	template<typename Type>
+	size_t Vector<Type>::size() const
 	{
 		return this->_size;
 	}
-	template<typename T>
-	void Vector<T>::push_back(T const& value)
+	template<typename Type>
+	void Vector<Type>::push_back(Type const& value)
 	{
 		if (this->_size == 0)
 		{
-			this->data = new T[++_size];
+			this->data = new Type[++_size];
 			this->data[this->_size - 1] = value;
 		}
 		else
 		{
-			T* temp = new T[++_size];
+			Type* temp = new Type[++_size];
 			for (size_t t = 0; t < this->_size - 1; ++t)
 				temp[t] = this->data[t];
 			delete[] this->data;
@@ -89,17 +89,17 @@ namespace Andi
 			this->data[this->_size - 1] = value;
 		}
 	}
-	template<typename T>
-	void Vector<T>::pop_back()
+	template<typename Type>
+	void Vector<Type>::pop_back()
 	{
-		T* temp = new T[--_size];
+		Type* temp = new T[--_size];
 		for (size_t t = 0; t < this->_size; ++t)
 			temp[t] = this->data[t];
 		delete[] this->data;
 		this->data = temp;
 	}
-	template<typename T>
-	void Vector<T>::erase(size_t pos)
+	template<typename Type>
+	void Vector<Type>::erase(size_t pos)
 	{
 		if (pos < 1 || pos > this->_size)
 			return;
@@ -111,12 +111,12 @@ namespace Andi
 		delete[] this->data;
 		this->data = temp;
 	}
-	template<typename T>
-	void Vector<T>::insert(size_t pos, T const& value)
+	template<typename Type>
+	void Vector<Type>::insert(size_t pos, Type const& value)
 	{
 		if (pos < 1 || pos > this->_size)
 			return;
-		T* temp = new T[++_size];
+		Type* temp = new Type[++_size];
 		for (size_t t = 0; t < pos - 1; ++t)
 			temp[t] = this->data[t];
 		temp[pos - 1] = value;
@@ -125,33 +125,33 @@ namespace Andi
 		delete[] this->data;
 		this->data = temp;
 	}
-	template<typename T>
-	void Vector<T>::reverse()
+	template<typename Type>
+	void Vector<Type>::reverse()
 	{
-		T* temp = new T[this->_size];
+		Type* temp = new Type[this->_size];
 		for (size_t t = 0; t < this->_size; ++t)
 			temp[t] = this->data[this->_size - 1 - t];
 		delete[] this->data;
 		this->data = temp;
 	}
-	template<typename T>
-	T Vector<T>::front() const
+	template<typename Type>
+	Type Vector<Type>::front() const
 	{
 		return this->data[0];
 	}
-	template<typename T>
-	T Vector<T>::back() const
+	template<typename Type>
+	Type Vector<Type>::back() const
 	{
 		return this->data[_size - 1];
 	}
 
-	template<typename T>
-	T Vector<T>::operator[](size_t pos)
+	template<typename Type>
+	Type Vector<Type>::operator[](size_t pos)
 	{
 		return this->data[pos];
 	}
-	template<typename T>
-	Vector<T>& Vector<T>::operator=(Vector<T> const& vec)
+	template<typename Type>
+	Vector<Type>& Vector<Type>::operator=(Vector<Type> const& vec)
 	{
 		if (this == &vec)
 			return *this;
@@ -160,16 +160,16 @@ namespace Andi
 		for (size_t t = 0; t < this->_size; ++t)
 			this->data[t] = vec.at(t);
 	}
-	template<typename T>
-	std::ostream& operator<<(std::ostream& ofs, Vector<T> const& vec)
+	template<typename __Type>
+	std::ostream& operator<<(std::ostream& ofs, Vector<__Type> const& vec)
 	{
 		for (size_t t = 0; t < vec.size(); ++t)
 			ofs << vec.at(t) << " ";
 		std::cout << "\n";
 		return ofs;
 	}
-	template<typename T>
-	bool operator==(Vector<T> const& vec1, Vector<T> const& vec2)
+	template<typename __Type>
+	bool operator==(Vector< __Type> const& vec1, Vector<__Type> const& vec2)
 	{
 		if (vec1.size() != vec2.size())
 			return false;
@@ -178,8 +178,8 @@ namespace Andi
 				return false;
 		return true;
 	}
-	template<typename T>
-	bool operator!=(Vector<T> const& vec1, Vector<T> const& vec2)
+	template<typename __Type>
+	bool operator!=(Vector<__Type> const& vec1, Vector<__Type> const& vec2)
 	{
 		if (vec1.size() != vec2.size())
 			return true;
@@ -188,7 +188,5 @@ namespace Andi
 				return true;
 		return false;
 	}
-	//---------------------------------------------------------------------------------------
-	//---------------------------------------------------------------------------------------
 }
-#endif //_VECTOR_
+#endif //__VECTOR__
