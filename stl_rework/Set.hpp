@@ -30,13 +30,14 @@ namespace Andi
 		template <typename Right_Comparator = std::less<>>
 		Set(Set<Type, Right_Comparator> const &set);
 		//Construct only for lambda pred;
-		//Use std::function<bool(Type, Type)>
+		//Use std::function<bool(Type, Type)> for comparator definition
 		explicit Set(Comparator const &comparator);
 		~Set();
 
 		void insert(Type const &value);
 		bool empty() const;
 		void erase(size_t pos);
+		size_t size_() const;
 		void clear();
 		void swap(Set &set);
 		Type *const find(Type const &key) const;
@@ -125,6 +126,11 @@ namespace Andi
 			temp[t] = this->data[t + 1];
 		delete[] this->data;
 		this->data = temp;
+	}
+	template<typename Type, typename Comparator>
+	size_t Set<Type, Comparator>::size_() const
+	{
+		return this->size;
 	}
 	template <typename Type, typename Comparator>
 	void Set<Type, Comparator>::clear()
