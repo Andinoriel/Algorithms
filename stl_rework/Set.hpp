@@ -24,7 +24,7 @@ namespace Andi
 			}
 		} _NO_CHANGE;
 
-		//проверка на наличие компаратора для Type
+		//checking comparator aviable for Type
 	public:
 		Set();
 		template <typename Right_Comparator = std::less<>>

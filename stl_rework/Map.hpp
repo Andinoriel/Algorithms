@@ -11,7 +11,14 @@ namespace Andi
 	class Map
 	{
 	private:
-		Type* data;
+		class MapElement
+		{
+		private:
+			Key* key; Type* data;
+		public:
+			MapElement();
+		};
+		MapElement* data;
 		size_t size;
 		Comparator comparator;
 
@@ -57,6 +64,29 @@ namespace Andi
 		template <typename __Key, typename __Type, typename __Comparator = std::less<>>
 		friend std::ostream& operator<<(std::ostream& os, Map<__Key, __Type, __Comparator> const& map);
 	};
+
+	template<typename Key, typename Type, typename Comparator>
+	Map<Key, Type, Comparator>::Map()
+	{
+		this->data = nullptr;
+		this->size = 0;
+	}
+	template<typename Key, typename Type, typename Comparator>
+	template<typename Right_Comparator>
+	Map<Key, Type, Comparator>::Map(Map<Key, Type, Right_Comparator> const& map)
+	{
+		//copying construct
+	}
+	template<typename Key, typename Type, typename Comparator>
+	Map<Key, Type, Comparator>::Map(Comparator const& comparator)
+	{
+		this->comparator = comparator;
+	}
+	template<typename Key, typename Type, typename Comparator>
+	Map<Key, Type, Comparator>::~Map()
+	{
+		delete[] this->data;
+	}
 }
 
 #endif //__MAP__
