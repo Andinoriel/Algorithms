@@ -24,7 +24,7 @@ namespace Andi
 			}
 		} _NO_CHANGE;
 
-		//проверка на наличие компаратора для Type
+		//TODO: checking comparator for std::lesst<Type>
 	public:
 		Set();
 		template <typename Right_Comparator = std::less<>>

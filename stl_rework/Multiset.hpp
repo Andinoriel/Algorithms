@@ -24,6 +24,8 @@ namespace Andi
 				return left == right;
 			}
 		} _NO_CHANGE;
+
+		//TODO: checking comparator for std::lesst<Type>
 	public:
 		Multiset();
 		template <typename Right_Comparator = std::less<>>
