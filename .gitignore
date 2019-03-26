@@ -337,3 +337,9 @@ ASALocalRun/
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+
+.vscode
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
