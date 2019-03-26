@@ -7,9 +7,9 @@
 
 namespace Andi
 {
-    #pragma region LinkedList
+#pragma region LinkedList
 
-    #pragma region LinkedListDef
+#pragma region LinkedListDef
     template <typename Type>
     class LinkedList
     {
@@ -44,9 +44,9 @@ namespace Andi
 
         Type &const operator[](size_t pos) const;
     };
-    #pragma endregion
+#pragma endregion
 
-    #pragma region NodeImpl
+#pragma region NodeImpl
     template <typename Type>
     LinkedList<Type>::Node::Node()
     {
@@ -65,9 +65,9 @@ namespace Andi
         delete this->__value;
         delete this->__next;
     }
-    #pragma endregion
+#pragma endregion
 
-    #pragma region LinkedListImpl
+#pragma region LinkedListImpl
     template <typename Type>
     LinkedList<Type>::LinkedList()
     {
@@ -226,8 +226,9 @@ namespace Andi
             current = current->__next;
         return *current->__value;
     }
-    #pragma endregion
-    #pragma endregion
+#pragma endregion
+
+#pragma endregion
 };
 
 #endif //__LINKEDLIST__
