@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "GL/freeglut.h"
+#include "../../../GL/freeglut.h"
 
 static GLfloat width = 1024, height = 768;
 static GLfloat zoom = 1, scale = 12;
