@@ -2,6 +2,9 @@
 #ifndef __SINGLETON_HPP__
 #define __SINGLETON_HPP__
 
+// for work demonstration
+#include <iostream>
+
 #pragma region PureSingleton
 template <typename SingleInstance>
 class PureSingleton
@@ -52,7 +55,7 @@ public:
 
 #pragma region MeyersSingletonWithoutLazyInit
 template <typename SingleInstance>
-class MeyersSingletonWithoutLazyInit : public IDisposable
+class MeyersSingletonWithoutLazyInit
 {
 public:
 	MeyersSingletonWithoutLazyInit() = delete;
@@ -67,6 +70,43 @@ public:
 	};
 private:
 	inline static SingleInstance currentInstance;
+};
+#pragma endregion
+
+#pragma region TEST
+class TEST
+{
+public:
+	// use TEST::DO_TEST() for test
+	inline static void DO_TEST(void)
+	{
+		#pragma region PureSingleton Test
+		auto f1 = PureSingleton<size_t>::GetInstance();
+		std::cout << "\nf addr: " << &f1;
+		auto s1 = PureSingleton<size_t>::GetInstance();
+		std::cout << "\ns addr: " << &s1;
+
+		std::cout << std::boolalpha << "\n" << (&f1 == &s1 ? false : true);
+		#pragma endregion
+
+		#pragma region MeyersSingleton Test
+		auto f2 = MeyersSingleton<float>::GetInstance();
+		std::cout << "\nf addr: " << &f2;
+		auto s2 = MeyersSingleton<float>::GetInstance();
+		std::cout << "\ns addr: " << &s2;
+
+		std::cout << std::boolalpha << "\n" << (&f2 == &s2 ? false : true);
+		#pragma endregion
+
+		#pragma region MeyersSingletonWithoutLazyInit Test
+		auto f3 = MeyersSingleton<float>::GetInstance();
+		std::cout << "\nf addr: " << &f3;
+		auto s3 = MeyersSingleton<float>::GetInstance();
+		std::cout << "\ns addr: " << &s3;
+
+		std::cout << std::boolalpha << "\n" << (&f3 == &s3 ? false : true);
+		#pragma endregion
+	};
 };
 #pragma endregion
 
