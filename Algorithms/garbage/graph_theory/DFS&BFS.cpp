@@ -5,65 +5,68 @@
 #include <functional>
 #include <queue>
 
-std::vector<std::vector<unsigned short>> graph = 
+namespace DFSBFS
 {
-  { 0, 1, 1, 1, 0, 0, 0 },
-  { 1, 0, 0, 1, 1, 0, 0 },
-  { 1, 0, 0, 0, 0, 1, 1 },
-  { 1, 1, 0, 0, 1, 0, 0 },
-  { 0, 1, 0, 1, 0, 0, 0 },
-  { 0, 0, 1, 0, 0, 0, 1 },
-  { 0, 0, 1, 0, 0, 1, 0 }
-};
-std::vector<char> visited;
-
-void depthFirstSearch()
-{
-	visited.clear();
-	visited.resize(graph.size());
-	std::function<void(unsigned short)> dfs = [&](unsigned short vertex)
+	std::vector<std::vector<unsigned short>> graph =
 	{
-		visited[vertex] = true;
-		std::cout << "\nVertex #" << vertex << " visited!";
-		for (size_t t = 0; t < graph.size(); ++t)
-			if (!visited[t] && graph[vertex][t])
-				dfs(static_cast<unsigned short>(t));
+	  { 0, 1, 1, 1, 0, 0, 0 },
+	  { 1, 0, 0, 1, 1, 0, 0 },
+	  { 1, 0, 0, 0, 0, 1, 1 },
+	  { 1, 1, 0, 0, 1, 0, 0 },
+	  { 0, 1, 0, 1, 0, 0, 0 },
+	  { 0, 0, 1, 0, 0, 0, 1 },
+	  { 0, 0, 1, 0, 0, 1, 0 }
 	};
-	dfs(0);
-};
-void breadthFirstSearch()
-{
-	visited.clear();
-	visited.resize(graph.size());
-	std::function<void(unsigned short)> bfs = [&](unsigned short vertex)
+	std::vector<char> visited;
+
+	void depthFirstSearch()
 	{
-		std::queue<unsigned short> queue;
-		queue.push(vertex);
-		visited[vertex] = true;
-		while (!queue.empty())
+		visited.clear();
+		visited.resize(graph.size());
+		std::function<void(unsigned short)> dfs = [&](unsigned short vertex)
 		{
-			vertex = queue.front();
+			visited[vertex] = true;
 			std::cout << "\nVertex #" << vertex << " visited!";
-			queue.pop();
 			for (size_t t = 0; t < graph.size(); ++t)
 				if (!visited[t] && graph[vertex][t])
-				{
-					visited[t] = true;
-					queue.push(t);
-				}
-		}
+					dfs(static_cast<unsigned short>(t));
+		};
+		dfs(0);
 	};
-	bfs(0);
+	void breadthFirstSearch()
+	{
+		visited.clear();
+		visited.resize(graph.size());
+		std::function<void(unsigned short)> bfs = [&](unsigned short vertex)
+		{
+			std::queue<unsigned short> queue;
+			queue.push(vertex);
+			visited[vertex] = true;
+			while (!queue.empty())
+			{
+				vertex = queue.front();
+				std::cout << "\nVertex #" << vertex << " visited!";
+				queue.pop();
+				for (size_t t = 0; t < graph.size(); ++t)
+					if (!visited[t] && graph[vertex][t])
+					{
+						visited[t] = true;
+						queue.push(t);
+					}
+			}
+		};
+		bfs(0);
+	};
+
+	int TEST()
+	{
+		std::cout << "\nDepth First Search:\n";
+		depthFirstSearch();
+		std::cout << "\n\n";
+		std::cout << "\nBreadth First Search:\n";
+		breadthFirstSearch();
+
+		std::cin.get();
+		return 0;
+	}
 };
-
-int main()
-{
-	std::cout << "\nDepth First Search:\n";
-	depthFirstSearch();
-	std::cout << "\n\n";
-	std::cout << "\nBreadth First Search:\n";
-	breadthFirstSearch();
-
-	std::cin.get();
-	return 0;
-}

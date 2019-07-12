@@ -3,64 +3,64 @@
 #include "AbstractFactory.hpp"
 
 #pragma region Products
-void ConcreteProductA1::SomeOperation(void)
+void AbstractFactory::ConcreteProductA1::SomeOperation(void)
 {
 	std::cout << "\nConcrete Product A1: doing something...";
 }
-void ConcreteProductA2::SomeOperation(void)
+void AbstractFactory::ConcreteProductA2::SomeOperation(void)
 {
 	std::cout << "\nConcrete Product A2: doing something...";
 }
-void ConcreteProductB1::SomeOperation(void)
+void AbstractFactory::ConcreteProductB1::SomeOperation(void)
 {
 	std::cout << "\nConcrete Product B1: doing something...";
 }
-void ConcreteProductB2::SomeOperation(void)
+void AbstractFactory::ConcreteProductB2::SomeOperation(void)
 {
 	std::cout << "\nConcrete Product B2: doing something...";
 }
 #pragma endregion
 
 #pragma region Factories
-IProduct* ConcreteFactory1::CreateProduct1(void)
+AbstractFactory::IProduct* AbstractFactory::ConcreteFactory1::CreateProduct1(void)
 {
 	return new ConcreteProductA1();
 }
-IProduct* ConcreteFactory1::CreateProduct2(void)
+AbstractFactory::IProduct* AbstractFactory::ConcreteFactory1::CreateProduct2(void)
 {
 	return new ConcreteProductA2();
 }
-IProduct* ConcreteFactory2::CreateProduct1(void)
+AbstractFactory::IProduct* AbstractFactory::ConcreteFactory2::CreateProduct1(void)
 {
 	return new ConcreteProductB1();
 }
-IProduct* ConcreteFactory2::CreateProduct2(void)
+AbstractFactory::IProduct* AbstractFactory::ConcreteFactory2::CreateProduct2(void)
 {
 	return new ConcreteProductB2();
 }
 #pragma endregion
 
 #pragma region Client
-Client::Client(IAbstractFactory& factory)
+AbstractFactory::Client::Client(IAbstractFactory& factory)
 {
 	this->current_factory = &factory;
 }
-void Client::ChangeFactory(IAbstractFactory& factory)
+void AbstractFactory::Client::ChangeFactory(IAbstractFactory& factory)
 {
 	this->current_factory = &factory;
 }
-IProduct* Client::CreateProduct1(void) noexcept
+AbstractFactory::IProduct* AbstractFactory::Client::CreateProduct1(void) noexcept
 {
 	return this->current_factory->CreateProduct1();
 }
-IProduct* Client::CreateProduct2(void) noexcept
+AbstractFactory::IProduct* AbstractFactory::Client::CreateProduct2(void) noexcept
 {
 	return this->current_factory->CreateProduct2();
 }
 #pragma endregion
 
 #pragma region TEST
-void TEST::DO_TEST(void)
+void AbstractFactory::TEST::DO_TEST(void)
 {
 	ConcreteFactory1 cf1; ConcreteFactory2 cf2;
 	Client client(cf1);

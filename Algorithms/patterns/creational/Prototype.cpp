@@ -3,19 +3,19 @@
 #include "Prototype.hpp"
 
 #pragma region ConcretePrototype
-ConcretePrototype::ConcretePrototype(void)
+Prototype::ConcretePrototype::ConcretePrototype(void)
 {
 	this->some_field_1 = "ConcretePrototype: some_field_1";
 	this->some_field_2 = 65536;
 	this->some_field_3 = 3.141592;
 }
-IPrototype* ConcretePrototype::Clone(void)
+Prototype::IPrototype* Prototype::ConcretePrototype::Clone(void)
 {
 	IPrototype* cloned = new ConcretePrototype();
 	*cloned = *this; // do necessary things to copy itself
 	return cloned;
 }
-void ConcretePrototype::PrintData(void) const noexcept
+void Prototype::ConcretePrototype::PrintData(void) const noexcept
 {
 	std::cout << "\nfield_1: " << this->some_field_1;
 	std::cout << "\nfield_2: " << this->some_field_2;
@@ -24,7 +24,7 @@ void ConcretePrototype::PrintData(void) const noexcept
 #pragma endregion
 
 #pragma region TEST
-void TEST::DO_TEST(void)
+void Prototype::TEST::DO_TEST(void)
 {
 	ConcretePrototype existing;
 	std::cout << "\nexisting data:";

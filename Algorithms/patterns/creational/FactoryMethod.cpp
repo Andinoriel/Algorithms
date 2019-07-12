@@ -3,37 +3,37 @@
 #include "FactoryMethod.hpp"
 
 #pragma region Products
-void DefaultProduct::DoStuff(void)
+void FactoryMethod::DefaultProduct::DoStuff(void)
 {
 	std::cout << "\nDefault Product: doing stuff...";
 }
-void ConcreteProduct1::DoStuff(void)
+void FactoryMethod::ConcreteProduct1::DoStuff(void)
 {
 	std::cout << "\nConcrete Product 1: doing stuff...";
 }
-void ConcreteProduct2::DoStuff(void)
+void FactoryMethod::ConcreteProduct2::DoStuff(void)
 {
 	std::cout << "\nConcrete Product 2: doing stuff...";
 }
 #pragma endregion
 
 #pragma region Creators
-IProduct* Creator::CreateProduct(void)
+FactoryMethod::IProduct* FactoryMethod::Creator::CreateProduct(void)
 {
 	return new DefaultProduct();
 }
-ConcreteProduct1* ConcreteCreator1::CreateProduct(void)
+FactoryMethod::ConcreteProduct1* FactoryMethod::ConcreteCreator1::CreateProduct(void)
 {
 	return new ConcreteProduct1();
 }
-ConcreteProduct2* ConcreteCreator2::CreateProduct(void)
+FactoryMethod::ConcreteProduct2* FactoryMethod::ConcreteCreator2::CreateProduct(void)
 {
 	return new ConcreteProduct2();
 }
 #pragma endregion
 
 #pragma region TEST
-void TEST::DO_TEST(void)
+void FactoryMethod::TEST::DO_TEST(void)
 {
 	auto SomeOperation = [](Creator* creator) -> void
 	{
