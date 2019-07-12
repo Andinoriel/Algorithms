@@ -40,18 +40,18 @@ public:
 	~Creator(void) = default;
 
 	//void SomeOperation(void);
-	virtual IProduct* CreateProduct(void) noexcept;
+	virtual IProduct* CreateProduct(void);
 };
 
 class ConcreteCreator1 : public Creator
 {
 public:
-	virtual ConcreteProduct1* CreateProduct(void) noexcept override final;
+	virtual ConcreteProduct1* CreateProduct(void) override final;
 };
 class ConcreteCreator2 : public Creator
 {
 public:
-	virtual ConcreteProduct2* CreateProduct(void) noexcept override final;
+	virtual ConcreteProduct2* CreateProduct(void) override final;
 };
 #pragma endregion
 

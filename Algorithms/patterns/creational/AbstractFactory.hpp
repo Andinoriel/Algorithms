@@ -37,20 +37,20 @@ public:
 class IAbstractFactory
 {
 public:
-	virtual IProduct* CreateProduct1(void) noexcept = 0;
-	virtual IProduct* CreateProduct2(void) noexcept = 0;
+	virtual IProduct* CreateProduct1(void) = 0;
+	virtual IProduct* CreateProduct2(void) = 0;
 };
 class ConcreteFactory1 : public IAbstractFactory
 {
 public:
-	virtual IProduct* CreateProduct1(void) noexcept override final;
-	virtual IProduct* CreateProduct2(void) noexcept override final;
+	virtual IProduct* CreateProduct1(void) override final;
+	virtual IProduct* CreateProduct2(void) override final;
 };
 class ConcreteFactory2 : public IAbstractFactory
 {
 public:
-	virtual IProduct* CreateProduct1(void) noexcept override final;
-	virtual IProduct* CreateProduct2(void) noexcept override final;
+	virtual IProduct* CreateProduct1(void) override final;
+	virtual IProduct* CreateProduct2(void) override final;
 };
 #pragma endregion
 

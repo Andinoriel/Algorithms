@@ -9,10 +9,10 @@ ConcretePrototype::ConcretePrototype(void)
 	this->some_field_2 = 65536;
 	this->some_field_3 = 3.141592;
 }
-IPrototype* ConcretePrototype::Clone(void) noexcept
+IPrototype* ConcretePrototype::Clone(void)
 {
 	IPrototype* cloned = new ConcretePrototype();
-	cloned = this; // do necessary things to copy itself
+	*cloned = *this; // do necessary things to copy itself
 	return cloned;
 }
 void ConcretePrototype::PrintData(void) const noexcept

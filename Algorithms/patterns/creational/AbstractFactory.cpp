@@ -22,19 +22,19 @@ void ConcreteProductB2::SomeOperation(void)
 #pragma endregion
 
 #pragma region Factories
-IProduct* ConcreteFactory1::CreateProduct1(void) noexcept
+IProduct* ConcreteFactory1::CreateProduct1(void)
 {
 	return new ConcreteProductA1();
 }
-IProduct* ConcreteFactory1::CreateProduct2(void) noexcept
+IProduct* ConcreteFactory1::CreateProduct2(void)
 {
 	return new ConcreteProductA2();
 }
-IProduct* ConcreteFactory2::CreateProduct1(void) noexcept
+IProduct* ConcreteFactory2::CreateProduct1(void)
 {
 	return new ConcreteProductB1();
 }
-IProduct* ConcreteFactory2::CreateProduct2(void) noexcept
+IProduct* ConcreteFactory2::CreateProduct2(void)
 {
 	return new ConcreteProductB2();
 }

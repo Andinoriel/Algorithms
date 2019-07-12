@@ -18,15 +18,15 @@ void ConcreteProduct2::DoStuff(void)
 #pragma endregion
 
 #pragma region Creators
-IProduct* Creator::CreateProduct(void) noexcept
+IProduct* Creator::CreateProduct(void)
 {
 	return new DefaultProduct();
 }
-ConcreteProduct1* ConcreteCreator1::CreateProduct(void) noexcept
+ConcreteProduct1* ConcreteCreator1::CreateProduct(void)
 {
 	return new ConcreteProduct1();
 }
-ConcreteProduct2* ConcreteCreator2::CreateProduct(void) noexcept
+ConcreteProduct2* ConcreteCreator2::CreateProduct(void)
 {
 	return new ConcreteProduct2();
 }

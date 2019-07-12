@@ -10,7 +10,7 @@
 class IPrototype
 {
 public:
-	virtual IPrototype* Clone(void) noexcept = 0;
+	virtual IPrototype* Clone(void) = 0;
 };
 #pragma endregion
 
@@ -21,7 +21,7 @@ public:
 	ConcretePrototype(void);
 	~ConcretePrototype(void) = default;
 
-	virtual IPrototype* Clone(void) noexcept override final;
+	virtual IPrototype* Clone(void) override final;
 	void PrintData(void) const noexcept;
 private:
 	std::string some_field_1;
