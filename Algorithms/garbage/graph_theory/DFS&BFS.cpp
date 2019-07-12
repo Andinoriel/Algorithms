@@ -17,7 +17,7 @@ namespace DFSBFS
 	  { 0, 0, 1, 0, 0, 0, 1 },
 	  { 0, 0, 1, 0, 0, 1, 0 }
 	};
-	std::vector<char> visited;
+	std::vector<bool> visited;
 
 	void depthFirstSearch()
 	{

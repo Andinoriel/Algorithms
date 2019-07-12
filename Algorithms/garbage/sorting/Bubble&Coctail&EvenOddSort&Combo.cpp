@@ -38,13 +38,13 @@ namespace BubbleCoctailEvenOddCombo
 	{
 		size_t count = 0;
 		double coeff = 1.2473309;
-		double step = array.size() - 1;
+		double step = static_cast<double>(array.size() - 1);
 		while (step >= 1)
 		{
-			for (size_t t = 0; t + step < array.size(); ++t)
-				if (array.at(t) > array.at(t + step))
+			for (size_t t = 0; t + static_cast<size_t>(step) < array.size(); ++t)
+				if (array.at(t) > array.at(t + static_cast<size_t>(step)))
 				{
-					std::swap(array.at(t), array.at(t + step));
+					std::swap(array.at(t), array.at(t + static_cast<size_t>(step)));
 					++count;
 				}
 			step /= coeff;

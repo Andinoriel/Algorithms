@@ -8,9 +8,9 @@
 
 namespace KraskalPrim
 {
-	static unsigned constexpr inf = std::numeric_limits<unsigned>::max();
+	static constexpr size_t inf = std::numeric_limits<size_t>::max();
 
-	std::vector<std::vector<unsigned>> graph =
+	std::vector<std::vector<size_t>> graph =
 	{
 	  { inf,	15,		7,		10,		inf,	inf,	inf },
 	  { 15,		inf,	inf,	4,		16,		inf,	inf },
@@ -23,17 +23,17 @@ namespace KraskalPrim
 
 	void Kraskal()
 	{
-		std::vector<unsigned> parent(graph.size());
-		std::function<unsigned(size_t)> find = [&](size_t vertex)
+		std::vector<size_t> parent(graph.size());
+		std::function<size_t(size_t)> find = [&](size_t vertex)
 		{
 			while (parent[vertex] != vertex)
 				vertex = parent[vertex];
 			return vertex;
 		};
-		std::function<void(unsigned, unsigned)> _union = [&](unsigned a, unsigned b)
+		std::function<void(size_t, size_t)> _union = [&](size_t a, size_t b)
 		{
-			unsigned i = find(a);
-			unsigned j = find(b);
+			size_t i = find(a);
+			size_t j = find(b);
 			parent[i] = j;
 		};
 
@@ -41,11 +41,11 @@ namespace KraskalPrim
 		{
 			unsigned min_cost = 0;
 			for (size_t t = 0; t < graph.size(); ++t)
-				parent[t] = static_cast<unsigned>(t);
+				parent[t] = t;
 			size_t edge_count = 0;
 			while (edge_count < graph.size() - 1)
 			{
-				unsigned min = inf, a = -1, b = -1;
+				size_t min = inf, a = -1, b = -1;
 				for (size_t t = 0; t < graph.size(); ++t)
 				{
 					for (size_t _t = 0; _t < graph.size(); ++_t)
@@ -66,8 +66,8 @@ namespace KraskalPrim
 	{
 		std::function<void()> prm = [&]()
 		{
-			std::vector<char> visited(graph.size());
-			std::vector<unsigned> min_edge(graph.size(), inf), last_edge(graph.size(), -1);
+			std::vector<bool> visited(graph.size());
+			std::vector<size_t> min_edge(graph.size(), inf), last_edge(graph.size(), -1);
 			min_edge[0] = 0;
 			for (size_t t = 0; t < graph.size(); ++t)
 			{

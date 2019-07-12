@@ -7,9 +7,9 @@
 
 namespace DijkstraFloydWarshall
 {
-	static const unsigned inf = std::numeric_limits<unsigned>::max();
+	static constexpr size_t inf = std::numeric_limits<size_t>::max();
 
-	std::vector<std::vector<unsigned>> graph =
+	std::vector<std::vector<size_t>> graph =
 	{
 	  { inf,	15,		7,		10,		inf,	inf,	inf },
 	  { 15,		inf,	inf,	4,		16,		inf,	inf },
@@ -23,10 +23,10 @@ namespace DijkstraFloydWarshall
 
 	void Dijkstra()
 	{
-		std::function<void(unsigned)> djkstr = [&](unsigned origin)
+		std::function<void(size_t)> djkstr = [&](size_t origin)
 		{
-			std::vector<unsigned> minWays(graph.size());
-			std::vector<char> visited(graph.size());
+			std::vector<size_t> minWays(graph.size()); //-V656
+			std::vector<bool> visited(graph.size()); //-V656
 			for (size_t t = 0; t < graph.size(); ++t)
 			{
 				minWays[t] = graph[origin][t];
@@ -37,7 +37,7 @@ namespace DijkstraFloydWarshall
 			size_t index = 0;
 			for (size_t t = 0; t < graph.size(); ++t)
 			{
-				unsigned min = inf;
+				size_t min = inf;
 				for (size_t _t = 0; _t < graph.size(); ++_t)
 					if (!visited[_t] && minWays[_t] < min)
 					{
@@ -46,7 +46,11 @@ namespace DijkstraFloydWarshall
 					}
 				visited[index] = true;
 				for (size_t _t = 0; _t < graph.size(); ++_t)
-					if (!visited[_t] && graph[index][_t] != inf && minWays[index] != inf && (minWays[index] + graph[index][_t] < minWays[_t]))
+					if (!visited[_t] && 
+						graph[index][_t] != inf && 
+						minWays[index] != inf && 
+						(minWays[index] + graph[index][_t] < minWays[_t])
+						)
 						minWays[_t] = minWays[index] + graph[index][_t];
 			}
 
@@ -63,7 +67,7 @@ namespace DijkstraFloydWarshall
 	{
 		std::function<void()> fw = [&]()
 		{
-			std::vector<std::vector<unsigned>> res(graph.size(), std::vector<unsigned>(graph.size()));
+			std::vector<std::vector<size_t>> res(graph.size(), std::vector<size_t>(graph.size()));
 			for (size_t t = 0; t < graph.size(); ++t)
 				for (size_t _t = 0; _t < graph.size(); ++_t)
 					for (size_t __t = 0; __t < graph.size(); ++__t)
