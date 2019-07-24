@@ -14,6 +14,8 @@ namespace Bridge
 		virtual void Method1(void) noexcept = 0;
 		virtual void Method2(void) noexcept = 0;
 		virtual void Method3(void) noexcept = 0;
+
+		virtual ~IImplementation(void) = 0 {};
 	};
 	class ConcreteImplementation1 : public IImplementation
 	{

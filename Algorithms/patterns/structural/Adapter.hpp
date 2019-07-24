@@ -11,6 +11,7 @@ namespace Adapter
 	{
 	public:
 		virtual void DoSomeThings(void) noexcept = 0;
+		virtual ~IClientInterface(void) = 0 {};
 	};
 
 	class Service

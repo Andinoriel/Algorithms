@@ -11,6 +11,7 @@ namespace Proxy
 	{
 	public:
 		virtual void SomeOperation(void) = 0;
+		virtual ~IServiceInterface(void) = 0 {};
 	};
 	
 	class Service : public IServiceInterface

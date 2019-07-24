@@ -1,3 +1,5 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 #include "Proxy.hpp"
 
 void Proxy::Service::SomeOperation(void)
@@ -42,5 +44,6 @@ void Proxy::TEST::DO_TEST(void)
 	delete service;
 	service = new Proxy();
 	service->SomeOperation();
+	delete service;
 };
 #pragma endregion
