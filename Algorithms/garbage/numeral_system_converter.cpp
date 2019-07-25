@@ -6,77 +6,43 @@
 
 namespace Converter
 {
-	class Converter
+	class ConverterFrom10
 	{
 	private:
-		static short constexpr
-			base2 = 2,
-			base8 = 8,
-			base16 = 16;
-		static std::string_view constexpr digits[] = { "0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F" };
+		short current_base;
+		static std::string_view constexpr digits[] = { "0", "1", "2", "3", "4", "5", "6","7", "8", "9", "A", "B", "C", "D", "E", "F",
+			"G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 	public:
-		static std::string convert2(size_t value_dec) noexcept;
-		static std::string convert8(size_t value_dec) noexcept;
-		static std::string convert13(size_t value_dec) noexcept;
-		static std::string convert16(size_t value_dec) noexcept;
+		ConverterFrom10(void);
+		ConverterFrom10(short base);
+		~ConverterFrom10(void) = default;
 
-		static void calculate() noexcept;
+		void ChangeBase(short base);
+		std::string Convert(size_t value_dec) const;
 	};
-	std::string Converter::convert2(size_t value_dec) noexcept
+	ConverterFrom10::ConverterFrom10(void) : current_base(10) {}
+	ConverterFrom10::ConverterFrom10(short base) : current_base(base) {}
+
+	void ConverterFrom10::ChangeBase(short base)
+	{
+		this->current_base = base;
+	}
+	std::string ConverterFrom10::Convert(size_t value_dec) const
 	{
 		if (value_dec == 0)
 			return std::string();
 		std::string result;
-		result.insert(0, Converter::digits[value_dec % Converter::base2]);
-		result.insert(0, Converter::convert2(value_dec /= Converter::base2));
+		result.insert(0, ConverterFrom10::digits[value_dec % this->current_base]);
+		result.insert(0, ConverterFrom10::Convert(value_dec /= this->current_base));
 		return result;
-	}
-	std::string Converter::convert8(size_t value_dec) noexcept
-	{
-		if (value_dec == 0)
-			return std::string();
-		std::string result;
-		result.insert(0, Converter::digits[value_dec % Converter::base8]);
-		result.insert(0, Converter::convert8(value_dec /= Converter::base8));
-		return result;
-	}
-	std::string Converter::convert13(size_t value_dec) noexcept
-	{
-		if (value_dec == 0)
-			return std::string();
-		std::string result;
-		result.insert(0, Converter::digits[value_dec % 13]);
-		result.insert(0, Converter::convert13(value_dec /= 13));
-		return result;
-	}
-	std::string Converter::convert16(size_t value_dec) noexcept
-	{
-		if (value_dec == 0)
-			return std::string();
-		std::string result;
-		result.insert(0, Converter::digits[value_dec % Converter::base16]);
-		result.insert(0, Converter::convert16(value_dec /= Converter::base16));
-		return result;
-	}
-	void Converter::calculate() noexcept
-	{
-		size_t temp;
-		std::cout << "\nEnter the dec value: ";
-		(std::cin >> temp).get();
-		std::cout << "\nDec to Bin: " << Converter::convert2(temp);
-		std::cout << "\nDec to Oct: " << Converter::convert8(temp);
-		std::cout << "\nDec to Hex: " << Converter::convert16(temp);
 	}
 
 	int TEST()
 	{
-		Converter::calculate();
-
-		std::cout << "\n\n";
-		std::cout << "\nWHAT DO YOU GET IF YOU MULTIPLY SIX BY NINE? or\nThe Ultimate Question of Life, the Universe, and Everything\n\tAnswer: ";
-		std::cout << atoi(Converter::convert13(6 * 9).c_str());
+		ConverterFrom10 cv(20);
+		std::cout << cv.Convert(256); // CG
 
 		std::cin.get();
 		return 0;
-	}
+	};
 };
