@@ -1,7 +1,7 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 /*
-*	$ vcvars64.bat where using cl.exe
+*	$ vcvars64.bat when using cl.exe
 *	**********************************************************************
 *	** Visual Studio 2019 Developer Command Prompt v16.2.0
 *	** Copyright (c) 2019 Microsoft Corporation
@@ -10,20 +10,56 @@
 *
 *	Compiled with #see more precisely for each item#
 *
-*	Copyright(c) 2019 Mykola Symon. All rights reserved.
 *
+*	Copyright(c) 2019 Mykola Symon. All rights reserved.*
 *	Assemble of some C++20 featuers
 */
 
 /*
 *	P0614R1 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0614r1.html 
 *	Test done
-*	clang -std=c++2a filename
+*	clang -std=c++2a -c filename
 */
+//#define P0614R1
+#ifdef P0614R1
+#include <vector>
+#include <cstddef>
+#include <iostream>
+
+static std::vector<std::size_t> vec;
+
+void Check(void)
+{
+	// init
+	for (std::size_t t = 0; t < 42; ++t)
+		vec.push_back(t);
+
+	for (std::size_t t = 0; auto const& elem : vec)
+	{
+		std::cout << t << "\t" << vec.at(t);
+		++t;
+	};
+};
+#endif // P0614R1
 
 /*
-*	P0482R6 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0482r6.html
-*	Test done
-*	g++ -std=c++2a filename
+*	P1301R4 https://thephd.github.io/vendor/future_cxx/papers/d1301.html
+*	Test failed: declared support in clang 9, but not implemented (?); need fix (?)
+*	clang -std=c++2a -c filename
 */
+//#define P1301R4
+#ifdef P1301R4
+#include <cstddef>
 
+[[nodiscard("reason")]] std::size_t* Foo(void)
+{
+	return new std::size_t;
+};
+
+#endif // P1301R4
+
+/*
+*	
+*	
+*
+*/
