@@ -11,10 +11,10 @@ namespace State
 	class IState
 	{
 	public:
+		virtual ~IState(void) = 0 {};
+
 		virtual void SomeOperation(void) = 0;
 		virtual void ChangeContext(Context* context) = 0;
-
-		virtual ~IState(void) = 0 {};
 	};
 
 	class Context

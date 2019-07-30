@@ -11,6 +11,8 @@ namespace AbstractFactory
 	class IProduct
 	{
 	public:
+		virtual ~IProduct(void) = 0 {};
+
 		virtual void SomeOperation(void) = 0;
 	};
 	class ConcreteProductA1 : public IProduct
@@ -39,6 +41,8 @@ namespace AbstractFactory
 	class IAbstractFactory
 	{
 	public:
+		virtual ~IAbstractFactory(void) = 0 {};
+
 		virtual IProduct* CreateProduct1(void) = 0;
 		virtual IProduct* CreateProduct2(void) = 0;
 	};

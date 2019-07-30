@@ -10,8 +10,9 @@ namespace Adapter
 	class IClientInterface
 	{
 	public:
-		virtual void DoSomeThings(void) noexcept = 0;
 		virtual ~IClientInterface(void) = 0 {};
+
+		virtual void DoSomeThings(void) noexcept = 0;
 	};
 
 	class Service

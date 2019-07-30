@@ -12,6 +12,8 @@ namespace FactoryMethod
 	class IProduct
 	{
 	public:
+		virtual ~IProduct(void) = 0 {};
+
 		virtual void DoStuff(void) = 0;
 	};
 #pragma endregion

@@ -12,6 +12,8 @@ namespace Builder
 	class IBuilder
 	{
 	public:
+		virtual ~IBuilder(void) = 0 {};
+
 		virtual void Reset(void) noexcept = 0;
 		virtual void BuilderStepFirst(void) = 0;
 		virtual void BuilderStepSecond(void) = 0;

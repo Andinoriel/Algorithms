@@ -12,6 +12,8 @@ namespace Prototype
 	class IPrototype
 	{
 	public:
+		virtual ~IPrototype(void) = 0 {};
+
 		virtual IPrototype* Clone(void) = 0;
 	};
 #pragma endregion
