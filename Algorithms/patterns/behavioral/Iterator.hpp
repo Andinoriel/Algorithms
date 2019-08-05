@@ -30,7 +30,7 @@ namespace Iterator
 
 	template <typename Type> class ConcreteCollection;
 	template <typename Type>
-	class ConcreteIterator : public IIterator<Type>
+	class ConcreteIterator final : public IIterator<Type>
 	{
 	public:
 		ConcreteIterator(ConcreteCollection<Type>* collection);
@@ -43,7 +43,7 @@ namespace Iterator
 	};
 
 	template <typename Type>
-	class ConcreteCollection : public IIterableCollection<Type>
+	class ConcreteCollection final : public IIterableCollection<Type>
 	{
 	public:
 		ConcreteCollection();

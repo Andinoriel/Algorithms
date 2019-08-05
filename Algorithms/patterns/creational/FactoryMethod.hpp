@@ -19,17 +19,17 @@ namespace FactoryMethod
 #pragma endregion
 
 #pragma region Products
-	class DefaultProduct : public IProduct
+	class DefaultProduct final : public IProduct
 	{
 	public:
 		virtual void DoStuff(void) override final;
 	};
-	class ConcreteProduct1 : public IProduct
+	class ConcreteProduct1 final : public IProduct
 	{
 	public:
 		virtual void DoStuff(void) override final;
 	};
-	class ConcreteProduct2 : public IProduct
+	class ConcreteProduct2 final : public IProduct
 	{
 	public:
 		virtual void DoStuff(void) override final;
@@ -47,12 +47,12 @@ namespace FactoryMethod
 		virtual IProduct* CreateProduct(void);
 	};
 
-	class ConcreteCreator1 : public Creator
+	class ConcreteCreator1 final : public Creator
 	{
 	public:
 		virtual ConcreteProduct1* CreateProduct(void) override final;
 	};
-	class ConcreteCreator2 : public Creator
+	class ConcreteCreator2 final : public Creator
 	{
 	public:
 		virtual ConcreteProduct2* CreateProduct(void) override final;

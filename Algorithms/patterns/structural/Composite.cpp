@@ -43,9 +43,9 @@ void Composite::TEST::DO_TEST(void)
 	cmp.AddChild(new Leaf()); // 2
 
 	Composite cmp_ch1, cmp_ch2;
-	cmp_ch1.AddChild(new Leaf()); //3
-	cmp_ch1.AddChild(new Leaf()); //4
-	cmp_ch2.AddChild(new Leaf()); //5
+	cmp_ch1.AddChild(new Leaf()); //-V525 //3
+	cmp_ch1.AddChild(new Leaf()); //-V525 //4 
+	cmp_ch2.AddChild(new Leaf()); //-V525 //5
 
 	cmp.AddChild(&cmp_ch1);
 	cmp.AddChild(&cmp_ch2);

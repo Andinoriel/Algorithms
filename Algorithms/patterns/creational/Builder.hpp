@@ -24,7 +24,7 @@ namespace Builder
 #pragma region Concrete Builders
 
 #pragma region ConcreteBuilder1
-	class ConcreteBuilder1 : public IBuilder
+	class ConcreteBuilder1 final : public IBuilder
 	{
 	public:
 		ConcreteBuilder1(void) = default;
@@ -42,7 +42,7 @@ namespace Builder
 #pragma endregion
 
 #pragma region ConcreteBuilder2
-	class ConcreteBuilder2 : public IBuilder
+	class ConcreteBuilder2 final : public IBuilder
 	{
 	public:
 		ConcreteBuilder2(void) = default;

@@ -21,7 +21,7 @@ namespace Adapter
 		void DoSomeThingsDifferently(void);
 	};
 
-	class Adapter : public IClientInterface, Service
+	class Adapter final : public IClientInterface, Service
 	{
 	public:
 		virtual void DoSomeThings(void) noexcept override final;

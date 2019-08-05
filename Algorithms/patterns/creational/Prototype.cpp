@@ -7,7 +7,7 @@ Prototype::ConcretePrototype::ConcretePrototype(void)
 {
 	this->some_field_1 = "ConcretePrototype: some_field_1";
 	this->some_field_2 = 65536;
-	this->some_field_3 = 3.141592;
+	this->some_field_3 = 3.14159f;
 }
 Prototype::IPrototype* Prototype::ConcretePrototype::Clone(void)
 {

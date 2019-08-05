@@ -29,7 +29,7 @@ namespace State
 	};
 
 #pragma region States
-	class ConcreteState1 : public IState
+	class ConcreteState1 final : public IState
 	{
 	public:
 		virtual void SomeOperation(void) override final;
@@ -37,7 +37,7 @@ namespace State
 	private:
 		Context* context;
 	};
-	class ConcreteState2 : public IState
+	class ConcreteState2 final : public IState
 	{
 	public:
 		virtual void SomeOperation(void) override final;

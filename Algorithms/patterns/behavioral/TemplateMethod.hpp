@@ -20,14 +20,14 @@ namespace TemplateMethod
 		virtual void Step4(void) = 0;
 	};
 
-	class ConcreteTemplate1 : public AbstractTemplate
+	class ConcreteTemplate1 final : public AbstractTemplate
 	{
 	private:
 		virtual void Step3(void) override final;
 		virtual void Step4(void) override final;
 	};
 
-	class ConcreteTemplate2 : public AbstractTemplate
+	class ConcreteTemplate2 final : public AbstractTemplate
 	{
 	private:
 		virtual void Step2(void) override final;

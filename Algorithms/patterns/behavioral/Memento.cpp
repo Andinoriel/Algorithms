@@ -6,7 +6,7 @@ Memento::Originator::Memento* Memento::Originator::Save(void) const
 {
 	return new Memento(this->state);
 }
-void Memento::Originator::Restore(Memento* snapshot)
+void Memento::Originator::Restore(Memento const* snapshot)
 {
 	this->state = snapshot->GetState();
 }

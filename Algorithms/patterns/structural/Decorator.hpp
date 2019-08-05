@@ -16,7 +16,7 @@ namespace Decorator
 		virtual void Execute(void) = 0;
 	};
 
-	class ConcreteComponent : public IComponent
+	class ConcreteComponent final : public IComponent
 	{
 	public:
 		virtual void Execute(void) override final;
@@ -36,7 +36,7 @@ namespace Decorator
 		IComponent* wrappee;
 	};
 
-	class ConcreteDecorator1 : public BaseDecorator
+	class ConcreteDecorator1 final : public BaseDecorator
 	{
 	public:
 		ConcreteDecorator1(IComponent* wrappee);
@@ -45,7 +45,7 @@ namespace Decorator
 		void DoExtraThing(void);
 	};
 
-	class ConcreteDecorator2 : public BaseDecorator
+	class ConcreteDecorator2 final : public BaseDecorator
 	{
 	public:
 		ConcreteDecorator2(IComponent* wrappee);

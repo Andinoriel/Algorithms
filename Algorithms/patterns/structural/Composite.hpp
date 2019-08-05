@@ -17,7 +17,7 @@ namespace Composite
 		virtual void Execute(void) = 0;
 	};
 
-	class Leaf : public IComponent
+	class Leaf final : public IComponent
 	{
 	public:
 		virtual void Execute(void) override final;

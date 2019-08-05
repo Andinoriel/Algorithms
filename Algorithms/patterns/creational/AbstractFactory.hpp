@@ -15,22 +15,22 @@ namespace AbstractFactory
 
 		virtual void SomeOperation(void) = 0;
 	};
-	class ConcreteProductA1 : public IProduct
+	class ConcreteProductA1 final: public IProduct
 	{
 	public:
 		virtual void SomeOperation(void) override final;
 	};
-	class ConcreteProductA2 : public IProduct
+	class ConcreteProductA2 final : public IProduct
 	{
 	public:
 		virtual void SomeOperation(void) override final;
 	};
-	class ConcreteProductB1 : public IProduct
+	class ConcreteProductB1 final : public IProduct
 	{
 	public:
 		virtual void SomeOperation(void) override final;
 	};
-	class ConcreteProductB2 : public IProduct
+	class ConcreteProductB2 final : public IProduct
 	{
 	public:
 		virtual void SomeOperation(void) override final;
@@ -46,13 +46,13 @@ namespace AbstractFactory
 		virtual IProduct* CreateProduct1(void) = 0;
 		virtual IProduct* CreateProduct2(void) = 0;
 	};
-	class ConcreteFactory1 : public IAbstractFactory
+	class ConcreteFactory1 final : public IAbstractFactory
 	{
 	public:
 		virtual IProduct* CreateProduct1(void) override final;
 		virtual IProduct* CreateProduct2(void) override final;
 	};
-	class ConcreteFactory2 : public IAbstractFactory
+	class ConcreteFactory2 final : public IAbstractFactory
 	{
 	public:
 		virtual IProduct* CreateProduct1(void) override final;

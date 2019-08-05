@@ -26,7 +26,7 @@ namespace Command
 		void SomeOperation(void);
 	};
 
-	class ConcreteCommand1 : public ICommand
+	class ConcreteCommand1 final : public ICommand
 	{
 	public:
 		ConcreteCommand1(Receiver1* receiver /* ,Params params // if need */);
@@ -35,7 +35,7 @@ namespace Command
 		Receiver1* receiver;
 	};
 
-	class ConcreteCommand2 : public ICommand
+	class ConcreteCommand2 final : public ICommand
 	{
 	public:
 		ConcreteCommand2(Receiver2* receiver /* ,Params params // if need */);

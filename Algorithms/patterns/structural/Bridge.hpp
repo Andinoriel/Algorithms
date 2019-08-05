@@ -17,14 +17,14 @@ namespace Bridge
 		virtual void Method2(void) noexcept = 0;
 		virtual void Method3(void) noexcept = 0;
 	};
-	class ConcreteImplementation1 : public IImplementation
+	class ConcreteImplementation1 final : public IImplementation
 	{
 	public:
 		virtual void Method1(void) noexcept override final;
 		virtual void Method2(void) noexcept override final;
 		virtual void Method3(void) noexcept override final;
 	};
-	class ConcreteImplementation2 : public IImplementation
+	class ConcreteImplementation2 final : public IImplementation
 	{
 	public:
 		virtual void Method1(void) noexcept override final;

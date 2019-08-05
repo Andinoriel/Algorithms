@@ -17,14 +17,14 @@ namespace Visitor
 		virtual void Accept(IVisitor* visitor) = 0;
 	};
 
-	class ConcreteElementA : public IElement
+	class ConcreteElementA final : public IElement
 	{
 	public:
 		virtual void Accept(IVisitor* visitor) override final;
 
 		void FeatureA(void);
 	};
-	class ConcreteElementB : public IElement
+	class ConcreteElementB final : public IElement
 	{
 	public:
 		virtual void Accept(IVisitor* visitor) override final;
@@ -42,7 +42,7 @@ namespace Visitor
 		virtual void Visit(ConcreteElementB* elementB) = 0;
 	};
 
-	class ConcreteVisitor : public IVisitor
+	class ConcreteVisitor final : public IVisitor
 	{
 	public:
 		virtual void Visit(ConcreteElementA* elementA) override final;

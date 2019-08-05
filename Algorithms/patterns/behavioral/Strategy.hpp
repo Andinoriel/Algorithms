@@ -15,13 +15,13 @@ namespace Strategy
 		virtual void Execute(void) = 0;
 	};
 
-	class ConcreteStrategy1 : public IStrategy
+	class ConcreteStrategy1 final : public IStrategy
 	{
 	public:
 		virtual void Execute(void) override final;
 	};
 
-	class ConcreteStrategy2 : public IStrategy
+	class ConcreteStrategy2 final : public IStrategy
 	{
 	public:
 		virtual void Execute(void) override final;

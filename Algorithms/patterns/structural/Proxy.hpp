@@ -15,13 +15,13 @@ namespace Proxy
 		virtual void SomeOperation(void) = 0;
 	};
 	
-	class Service : public IServiceInterface
+	class Service final : public IServiceInterface
 	{
 	public:
 		virtual void SomeOperation(void) override final;
 	};
 
-	class Proxy : public IServiceInterface
+	class Proxy final : public IServiceInterface
 	{
 	public:
 		Proxy(void);

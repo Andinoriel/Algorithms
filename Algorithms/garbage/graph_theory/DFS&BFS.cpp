@@ -51,7 +51,7 @@ namespace DFSBFS
 					if (!visited[t] && graph[vertex][t])
 					{
 						visited[t] = true;
-						queue.push(t);
+						queue.push(static_cast<unsigned short>(t));
 					}
 			}
 		};

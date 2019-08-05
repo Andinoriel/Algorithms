@@ -26,20 +26,20 @@ namespace CoR
 		IHandler* next;
 	};
 
-	class ConcreteHandler1 : public BaseHandler
+	class ConcreteHandler1 final : public BaseHandler
 	{
 	public:
-		virtual void Handle(std::string request) override;
+		virtual void Handle(std::string request) override final;
 	};
-	class ConcreteHandler2 : public BaseHandler
+	class ConcreteHandler2 final : public BaseHandler
 	{
 	public:
-		virtual void Handle(std::string request) override;
+		virtual void Handle(std::string request) override final;
 	};
-	class ConcreteHandler3 : public BaseHandler
+	class ConcreteHandler3 final : public BaseHandler
 	{
 	public:
-		virtual void Handle(std::string request) override;
+		virtual void Handle(std::string request) override final;
 	};	
 
 #pragma region TEST

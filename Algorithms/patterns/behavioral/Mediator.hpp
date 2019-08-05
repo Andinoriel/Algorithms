@@ -23,7 +23,7 @@ namespace Mediator
 		virtual void Notify(IComponent* component) = 0;
 	};
 #pragma region Components
-	class ConcreteComponentA : public IComponent
+	class ConcreteComponentA final : public IComponent
 	{
 	public:
 		ConcreteComponentA(IMediator* mediator);
@@ -33,7 +33,7 @@ namespace Mediator
 	private:
 		IMediator* mediator;
 	};
-	class ConcreteComponentB : public IComponent
+	class ConcreteComponentB final : public IComponent
 	{
 	public:
 		ConcreteComponentB(IMediator* mediator);
@@ -43,7 +43,7 @@ namespace Mediator
 	private:
 		IMediator* mediator;
 	};
-	class ConcreteComponentC : public IComponent
+	class ConcreteComponentC final : public IComponent
 	{
 	public:
 		ConcreteComponentC(IMediator* mediator);
@@ -55,7 +55,7 @@ namespace Mediator
 	};
 #pragma endregion
 
-	class ConcreteMediator : public IMediator
+	class ConcreteMediator final : public IMediator
 	{
 	public:
 		void SetComponents(ConcreteComponentA* cca, ConcreteComponentB* ccb, ConcreteComponentC* ccc);

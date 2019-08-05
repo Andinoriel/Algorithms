@@ -48,4 +48,7 @@ void TemplateMethod::TEST::DO_TEST(void)
 	tm1->TemplateMethod();
 	std::cout << "\n\n";
 	tm2->TemplateMethod();
+
+	delete tm1;
+	delete tm2;
 };

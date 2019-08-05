@@ -19,7 +19,7 @@ namespace Prototype
 #pragma endregion
 
 #pragma region ConcretePrototype
-	class ConcretePrototype : public IPrototype
+	class ConcretePrototype final : public IPrototype
 	{
 	public:
 		ConcretePrototype(void);

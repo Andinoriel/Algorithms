@@ -28,7 +28,7 @@ namespace Observer
 		std::ptrdiff_t SomeMainState;
 	};
 
-	class ConcreteSubscriber : public ISubscriber
+	class ConcreteSubscriber final : public ISubscriber
 	{
 	public:
 		virtual void Update(void) override final; // do smth when notify come
