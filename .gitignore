@@ -346,3 +346,4 @@ ASALocalRun/
 !.vscode/extensions.json
 
 ProjectRunner/
+*.lib
