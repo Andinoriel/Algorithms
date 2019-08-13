@@ -5,6 +5,8 @@
 #include <cstddef>
 #include <utility>
 
+#include "rttr/registration.h"
+
 namespace AlmostReflectionTypeTraits
 {
 	// pod field count
@@ -56,11 +58,32 @@ namespace AlmostReflectionTypeTraits
 			char c;		// 3 field
 		};
 	};
+};
 
-	inline namespace
+namespace RTTR_Test
+{
+	class RTTR_Test final
 	{
+	public:
+		inline RTTR_Test(void) : foo(0) {};
+		inline explicit RTTR_Test(double foo) : foo(foo) {};
 
+		double get_foo(void) const
+		{
+			return this->foo;
+		};
+	private:
+		double foo;
 	};
+
+	RTTR_REGISTRATION
+	{
+		rttr::registration::class_<RTTR_Test>("RTTR_Test")
+			.constructor<>()
+			.constructor<double>()
+			.method("get_foo", &RTTR_Test::get_foo);
+	};
+
 };
 
 #endif // !__GARBAGE_TESTS_HPP__
