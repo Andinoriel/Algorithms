@@ -3,9 +3,51 @@
 #define __GARBAGE_TESTS_HPP__
 
 #include <cstddef>
+#include <iostream>
+#include <string_view>
 #include <utility>
 
+#ifdef RTTR_TESTING
+
+#ifdef _DEBUG  
+#pragma comment(lib, "../3rd_party/rttrorg/rttr/lib/rttr_core_d.lib")
+#else
+#pragma comment(lib, "../3rd_party/rttrorg/rttr/lib/rttr_core.lib")
+#endif 
+
 #include "rttr/registration.h"
+
+namespace RTTR_Test
+{
+	class RTTR_Test final
+	{
+	public:
+		inline RTTR_Test(void) : foo(0) {};
+		inline explicit RTTR_Test(double foo) : foo(foo) {};
+
+		double get_foo(void) const
+		{
+			return this->foo;
+		};
+	private:
+		double foo;
+	};
+	RTTR_REGISTRATION
+	{
+		rttr::registration::class_<RTTR_Test>("RTTR_Test")
+			.constructor<>()
+			.constructor<double>()
+			.method("get_foo", &RTTR_Test::get_foo);
+	};
+
+	inline static void DO_TEST(void)
+	{
+		rttr::type type = rttr::type::get<RTTR_Test>();
+		for (auto& elem : type.get_methods())
+			std::cout << elem.get_signature() << " \n";
+	};
+};
+#endif // RTTR_TESTING
 
 namespace AlmostReflectionTypeTraits
 {
@@ -60,30 +102,50 @@ namespace AlmostReflectionTypeTraits
 	};
 };
 
-namespace RTTR_Test
+namespace TemplateMagic
 {
-	class RTTR_Test final
+#pragma region factorial
+	template <std::size_t n>
+	struct factorial
 	{
-	public:
-		inline RTTR_Test(void) : foo(0) {};
-		inline explicit RTTR_Test(double foo) : foo(foo) {};
+		static constexpr std::size_t result = n * factorial<n - 1>::result;
+	};
+	template<>
+	struct factorial<std::size_t(0)>
+	{
+		static constexpr std::size_t result = std::size_t(1);
+	};
+#pragma endregion
 
-		double get_foo(void) const
-		{
-			return this->foo;
-		};
+#pragma region deeper
+
+	// cl /EHsc /std:c++17
+	class deep_switch
+	{
 	private:
-		double foo;
+		// more specialized template
+		template <std::size_t n, typename... packet, typename function>
+		static constexpr inline typename std::enable_if<(sizeof...(packet) == n), void>::type call(function const& func) noexcept
+		{
+			func();
+		};
+		// less specialized template
+		template <std::size_t n, typename...>
+		static constexpr void call(...) noexcept {};
+	public:
+		template <typename... packet>
+		static constexpr inline typename std::enable_if<sizeof...(packet) <= 3, void>::type calc(packet... p) noexcept
+		{
+			deep_switch::call<0, packet...>([&p...]() {std::cout << "0"; });
+			deep_switch::call<1, packet...>([&p...]() {std::cout << "1"; });
+			deep_switch::call<2, packet...>([&p...]() {std::cout << "2"; });
+		};
+		template <typename...>
+		static constexpr inline void calc(...) noexcept {};
 	};
 
-	RTTR_REGISTRATION
-	{
-		rttr::registration::class_<RTTR_Test>("RTTR_Test")
-			.constructor<>()
-			.constructor<double>()
-			.method("get_foo", &RTTR_Test::get_foo);
-	};
 
+#pragma endregion
 };
 
 #endif // !__GARBAGE_TESTS_HPP__
