@@ -19,7 +19,7 @@ void Composite::Composite::RemoveChild(IComponent const* component)
 	std::vector<IComponent*>::iterator del_pos = std::find_if(this->children.begin(), this->children.end(), [](IComponent* component) {
 		return true; // implement your copy constructor for the required classes
 	});
-	if (del_pos not_eq this->children.end())
+	if (del_pos != this->children.end())
 		this->children.erase(del_pos);
 }
 std::vector<Composite::IComponent*> Composite::Composite::GetChildren() const

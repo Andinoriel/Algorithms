@@ -16,7 +16,7 @@ namespace Singleton
 		PureSingleton(PureSingleton<SingleInstance> const&) = delete;
 		PureSingleton(PureSingleton<SingleInstance>&&) = delete;
 		PureSingleton<SingleInstance> const& operator=(PureSingleton<SingleInstance> const&) = delete;
-		PureSingleton<SingleInstance> const&& operator=(PureSingleton<SingleInstance>&&) = delete;
+		PureSingleton<SingleInstance> const& operator=(PureSingleton<SingleInstance>&&) = delete;
 
 		[[nodiscard]] static SingleInstance* const GetInstance(void)
 		{
@@ -45,7 +45,7 @@ namespace Singleton
 		MeyersSingleton(MeyersSingleton<SingleInstance> const&) = delete;
 		MeyersSingleton(MeyersSingleton<SingleInstance>&&) = delete;
 		MeyersSingleton<SingleInstance> const& operator=(MeyersSingleton<SingleInstance> const&) = delete;
-		MeyersSingleton<SingleInstance> const&& operator=(MeyersSingleton<SingleInstance>&&) = delete;
+		MeyersSingleton<SingleInstance> const& operator=(MeyersSingleton<SingleInstance>&&) = delete;
 
 		[[nodiscard]] static SingleInstance& GetInstance(void)
 		{
@@ -64,7 +64,7 @@ namespace Singleton
 		MeyersSingletonWithoutLazyInit(MeyersSingletonWithoutLazyInit<SingleInstance> const&) = delete;
 		MeyersSingletonWithoutLazyInit(MeyersSingletonWithoutLazyInit<SingleInstance>&&) = delete;
 		MeyersSingletonWithoutLazyInit<SingleInstance> const& operator=(MeyersSingletonWithoutLazyInit<SingleInstance> const&) = delete;
-		MeyersSingletonWithoutLazyInit<SingleInstance> const&& operator=(MeyersSingletonWithoutLazyInit<SingleInstance>&&) = delete;
+		MeyersSingletonWithoutLazyInit<SingleInstance> const& operator=(MeyersSingletonWithoutLazyInit<SingleInstance>&&) = delete;
 
 		[[nodiscard]] static SingleInstance& GetInstance(void)
 		{

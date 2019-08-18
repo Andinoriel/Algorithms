@@ -11,7 +11,7 @@ void Observer::Publisher::Unsubscribe(ISubscriber* subscriber)
 	std::vector<ISubscriber*>::iterator del_pos = std::find_if(this->subscribers.begin(), this->subscribers.end(), [](ISubscriber* subscriber) {
 		return true; // implement your copy constructor for the required classes
 	});
-	if (del_pos not_eq this->subscribers.end())
+	if (del_pos != this->subscribers.end())
 		this->subscribers.erase(del_pos);
 }
 void Observer::Publisher::Notify(void) const
