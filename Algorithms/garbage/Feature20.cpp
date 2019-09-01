@@ -54,7 +54,7 @@ void Check(void)
 #ifdef P1301R4
 #include <cstddef>
 
-[[nodiscard("reason")]] std::size_t* Foo(void)
+[[nodiscard("reason")]] std::size_t* Check(void)
 {
 	return new std::size_t;
 };
@@ -72,7 +72,7 @@ void Check(void)
 #ifdef P1002R1
 #include <cstddef>
 
-constexpr std::size_t Foo(std::size_t x)
+constexpr std::size_t Check(std::size_t x)
 {
 	try
 	{
@@ -89,11 +89,30 @@ constexpr std::size_t Foo(std::size_t x)
 // ==================================================================================================
 
 /*
-*
-*
-*
+*	P1009R2 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1009r2.pdf
+*	Test done
+*	clang -std=c++2a -c filename
+*/
+//#define P1009R2
+#ifdef P1009R2
+
+double* Check(void)
+{
+	double* res = new double[] {1, 2, 3};
+	return res;
+};
+
+#endif // P1009R2
+
+// ==================================================================================================
+
+/*
+*	
+*	
+*	
 */
 
+// ==================================================================================================
 
 
 // ==================================================================================================
