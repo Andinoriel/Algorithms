@@ -13,13 +13,14 @@
 
 #pragma region garbage
 #ifdef __GARBAGE_EXTERN__
-	namespace BubbleCoctailEvenOddCombo { extern int TEST(void); };
-	namespace DFSBFS					{ extern int TEST(void); };
-	namespace DijkstraFloydWarshall		{ extern int TEST(void); };
-	namespace InsertSelectionMerge		{ extern int TEST(void); };
-	namespace KraskalPrim				{ extern int TEST(void); };
-	namespace Converter					{ extern int TEST(void); };
-	namespace ShellQuick				{ extern int TEST(void); };
+	#define EXTERN_TEST__ extern int TEST(void);
+	namespace BubbleCoctailEvenOddCombo { EXTERN_TEST__ };
+	namespace DFSBFS					{ EXTERN_TEST__ };
+	namespace DijkstraFloydWarshall		{ EXTERN_TEST__ };
+	namespace InsertSelectionMerge		{ EXTERN_TEST__ };
+	namespace KraskalPrim				{ EXTERN_TEST__ };
+	namespace Converter					{ EXTERN_TEST__ };
+	namespace ShellQuick				{ EXTERN_TEST__ };
 
 #pragma region garbage_run_tests
 #define __GARBAGE_RUN(name) name::TEST()
