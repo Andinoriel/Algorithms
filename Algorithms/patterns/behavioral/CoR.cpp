@@ -18,21 +18,21 @@ void CoR::BaseHandler::Handle(std::string request)
 void CoR::ConcreteHandler1::Handle(std::string request)
 {
 	if (request != "handle1")
-		__super::Handle(request);
+		BaseHandler::Handle(request);
 	else
 		std::cout << "Handler 1 request: " << request << "; chain termination...\n";
 }
 void CoR::ConcreteHandler2::Handle(std::string request)
 {
 	if (request != "handle2")
-		__super::Handle(request);
+		BaseHandler::Handle(request);
 	else
 		std::cout << "Handler 2 request: " << request << "; chain termination...\n";
 }
 void CoR::ConcreteHandler3::Handle(std::string request)
 {
 	if (request != "handle3")
-		__super::Handle(request);
+		BaseHandler::Handle(request);
 	else
 		std::cout << "Handler 3 request: " << request << "; chain termination...\n";
 }

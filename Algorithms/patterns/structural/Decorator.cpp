@@ -22,7 +22,7 @@ void Decorator::BaseDecorator::Execute(void)
 Decorator::ConcreteDecorator1::ConcreteDecorator1(IComponent* wrappee) : BaseDecorator(wrappee) {}
 void Decorator::ConcreteDecorator1::Execute(void)
 {
-	__super::Execute();
+	BaseDecorator::Execute();
 	this->DoExtraThing();
 }
 void Decorator::ConcreteDecorator1::DoExtraThing(void)
@@ -33,7 +33,7 @@ void Decorator::ConcreteDecorator1::DoExtraThing(void)
 Decorator::ConcreteDecorator2::ConcreteDecorator2(IComponent* wrappee) : BaseDecorator(wrappee) {}
 void Decorator::ConcreteDecorator2::Execute(void)
 {
-	__super::Execute();
+	BaseDecorator::Execute();
 	this->DoExtraThing();
 }
 void Decorator::ConcreteDecorator2::DoExtraThing(void)

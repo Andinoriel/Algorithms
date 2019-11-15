@@ -338,7 +338,7 @@ ASALocalRun/
 *.vcxproj.filters
 *.vcxproj.user
 
-.vscode
+.vscode/*
 *.dll
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -349,3 +349,4 @@ ProjectRunner/
 *.lib
 
 .build/
+CMakeFiles/

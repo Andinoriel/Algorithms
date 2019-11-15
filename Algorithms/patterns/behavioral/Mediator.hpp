@@ -10,7 +10,7 @@ namespace Mediator
 	class IComponent
 	{
 	public:
-		virtual ~IComponent(void) = 0 {};
+		virtual ~IComponent(void) {};
 		
 		virtual void React(void) = 0;
 	};
@@ -18,7 +18,7 @@ namespace Mediator
 	class IMediator
 	{
 	public:
-		virtual ~IMediator(void) = 0 {};
+		virtual ~IMediator(void) {};
 
 		virtual void Notify(IComponent* component) = 0;
 	};

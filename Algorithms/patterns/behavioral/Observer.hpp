@@ -12,7 +12,7 @@ namespace Observer
 	class ISubscriber
 	{
 	public:
-		virtual ~ISubscriber(void) = 0 {};
+		virtual ~ISubscriber(void) {};
 		virtual void Update(void) = 0;
 	};
 

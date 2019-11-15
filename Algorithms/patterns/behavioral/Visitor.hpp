@@ -12,7 +12,7 @@ namespace Visitor
 	class IElement
 	{
 	public:
-		virtual ~IElement(void) = 0 {};
+		virtual ~IElement(void) {};
 
 		virtual void Accept(IVisitor* visitor) = 0;
 	};
@@ -36,7 +36,7 @@ namespace Visitor
 	class IVisitor
 	{
 	public:
-		virtual ~IVisitor(void) = 0 {};
+		virtual ~IVisitor(void) {};
 
 		virtual void Visit(ConcreteElementA* elementA) = 0;
 		virtual void Visit(ConcreteElementB* elementB) = 0;

@@ -12,7 +12,7 @@ namespace FactoryMethod
 	class IProduct
 	{
 	public:
-		virtual ~IProduct(void) = 0 {};
+		virtual ~IProduct(void) {};
 
 		virtual void DoStuff(void) = 0;
 	};

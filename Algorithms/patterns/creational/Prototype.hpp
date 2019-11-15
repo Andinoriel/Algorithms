@@ -12,7 +12,7 @@ namespace Prototype
 	class IPrototype
 	{
 	public:
-		virtual ~IPrototype(void) = 0 {};
+		virtual ~IPrototype(void) {};
 
 		virtual IPrototype* Clone(void) = 0;
 	};

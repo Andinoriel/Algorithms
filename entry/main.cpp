@@ -1,8 +1,8 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
-//#define __GARBAGE_EXTERN__
-//#define __PATTERNS_INCLUDES__
+// #define __GARBAGE_EXTERN__
+// #define __PATTERNS_INCLUDES__
 #include "../Algorithms/pch.hpp"
 
 // inside part that use rttr
@@ -19,7 +19,7 @@ int main(void)
 
 #pragma region COMMENT_ME_IF_RTTR_USE
 
-	// templates
+	#pragma region templates
 	std::size_t count = 0;
 	AlmostReflectionTypeTraits::pod_reflection::detect_fields_count<AlmostReflectionTypeTraits::POD>(count);
 	std::cout << "AlmostReflectionTypeTraits::POD fields count: " << count << "\n";
@@ -33,6 +33,11 @@ int main(void)
 	struct has_bar { inline void bar() const noexcept { std::cout << "bar\n"; } } bar;
 	AlmostReflectionTypeTraits::call_foo_or_bar(foo);
 	AlmostReflectionTypeTraits::call_foo_or_bar(bar);
+	#pragma endregion // templates
+
+	// garbage_test::run();
+	// patterns_test::run();
+
 
 #pragma endregion
 

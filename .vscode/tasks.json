@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++ build active file",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-m64",
+                "-O2",
+                "-DNDEBUG",
+                "-std=c++17",
+                "-Wall",
+                "-Wno-unknown-pragmas",
+                // "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/.build/${fileBasenameNoExtension}.out"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }
+    ]
+}

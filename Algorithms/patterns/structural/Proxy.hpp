@@ -10,7 +10,7 @@ namespace Proxy
 	class IServiceInterface
 	{
 	public:
-		virtual ~IServiceInterface(void) = 0 {};
+		virtual ~IServiceInterface(void) {};
 
 		virtual void SomeOperation(void) = 0;
 	};

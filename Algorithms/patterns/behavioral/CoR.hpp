@@ -11,7 +11,7 @@ namespace CoR
 	class IHandler
 	{
 	public:
-		virtual ~IHandler(void) = 0 {};
+		virtual ~IHandler(void) {};
 
 		virtual void SetNext(IHandler* handler) = 0;
 		virtual void Handle(std::string request) = 0;

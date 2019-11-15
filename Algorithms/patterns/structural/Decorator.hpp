@@ -11,7 +11,7 @@ namespace Decorator
 	class IComponent
 	{
 	public:
-		virtual ~IComponent(void) = 0 {};
+		virtual ~IComponent(void) {};
 
 		virtual void Execute(void) = 0;
 	};

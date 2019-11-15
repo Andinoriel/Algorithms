@@ -7,14 +7,21 @@
 #include <string_view>
 #include <utility>
 
+#pragma region __RTTR_TEST_OFF__
 #ifndef __RTTR_TEST_OFF__
 
 #ifndef __BUILD_NOT_WITH_VS__
-#ifdef _DEBUG  
-	#pragma comment(lib, "../3rd_party/rttrorg/rttr/lib/rttr_core_d.lib")
-#else
-	#pragma comment(lib, "../3rd_party/rttrorg/rttr/lib/rttr_core.lib")
-#endif 
+	#if defined(_WIN64)
+		#ifdef _DEBUG  
+			#pragma comment(lib, "../3rd_party/rttrorg/rttr/lib/rttr_core_d.lib")
+		#else
+			#pragma comment(lib, "../3rd_party/rttrorg/rttr/lib/rttr_core.lib")
+		#endif 
+	// defined(_WIN64)
+	#elif defined(__linux__)
+		// ...
+		
+	#endif // defined(__linux__)
 #endif // !__MSVC_VS_LIB__
 
 #include "rttr/registration.h"
@@ -50,6 +57,7 @@ namespace RTTR_Test
 	};
 };
 #endif // __RTTR_TEST_OFF__
+#pragma endregion // __RTTR_TEST_OFF__
 
 namespace AlmostReflectionTypeTraits
 {
@@ -85,7 +93,7 @@ namespace AlmostReflectionTypeTraits
 				};
 				// less specialized template
 				template <typename pod_struct, std::size_t... AnotherParams>
-				inline static void constexpr refl_detect_fields_count(std::size_t& out, std::index_sequence<AnotherParams...>) noexcept
+				inline static auto constexpr refl_detect_fields_count(std::size_t& out, std::index_sequence<AnotherParams...>) noexcept -> void
 				{
 					refl_detect_fields_count<pod_struct>(out, std::make_index_sequence<sizeof...(AnotherParams) - 1>());
 				};

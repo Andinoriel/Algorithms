@@ -5,7 +5,7 @@ int fibonacci(int n, int res, int next)
   return fibonacci(n - 1, next, res + next);
 };
 
-int __cdecl main(void)
+int main(void)
 {
 	fibonacci(10,0,1);
 	return 0;

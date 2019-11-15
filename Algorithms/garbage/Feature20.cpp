@@ -14,8 +14,11 @@
 *	Copyright(c) 2019 Mykola Symon. All rights reserved.
 *	Assemble of some C++20 featuers
 */
+
+// ==================================================================================================
 // ==================================================================================================
 
+#pragma region P0614R1
 /*
 *	P0614R1 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0614r1.html 
 *	Test done
@@ -42,9 +45,9 @@ void Check(void)
 	};
 };
 #endif // P0614R1
+#pragma endregion // P0614R1
 
-// ==================================================================================================
-
+#pragma region P1301R4
 /*
 *	P1301R4 https://thephd.github.io/vendor/future_cxx/papers/d1301.html
 *	Test failed: declared support in clang 9, but not implemented (?); need fix (?)
@@ -60,9 +63,9 @@ void Check(void)
 };
 
 #endif // P1301R4
+#pragma endregion // P1301R4
 
-// ==================================================================================================
-
+#pragma region P1002R1
 /*
 *	P1002R1 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1002r1.pdf
 *	Test done
@@ -85,9 +88,9 @@ constexpr std::size_t Check(std::size_t x)
 };
 
 #endif // P1002R1
+#pragma endregion // P1002R1
 
-// ==================================================================================================
-
+#pragma region P1009R2
 /*
 *	P1009R2 http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1009r2.pdf
 *	Test done
@@ -103,16 +106,13 @@ double* Check(void)
 };
 
 #endif // P1009R2
-
-// ==================================================================================================
+#pragma endregion // P1009R2
 
 /*
 *	
 *	
 *	
 */
-
-// ==================================================================================================
 
 
 // ==================================================================================================
@@ -122,7 +122,7 @@ double* Check(void)
 *	Entry point
 */
 #ifndef __EP_OFF__
-int __cdecl main(void)
+int main(void)
 {
 	return 0;
 };

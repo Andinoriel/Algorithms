@@ -22,22 +22,22 @@
 	namespace Converter					{ EXTERN_TEST__ };
 	namespace ShellQuick				{ EXTERN_TEST__ };
 
-#pragma region garbage_run_tests
-#define __GARBAGE_RUN(name) name::TEST()
-	namespace garbage_test
-	{
-		inline static void run(void)
+	#pragma region garbage_run_tests
+	#define __GARBAGE_RUN(name) name::TEST()
+		namespace garbage_test
 		{
-			__GARBAGE_RUN(BubbleCoctailEvenOddCombo);
-			__GARBAGE_RUN(DFSBFS);
-			__GARBAGE_RUN(DijkstraFloydWarshall);
-			__GARBAGE_RUN(InsertSelectionMerge);
-			__GARBAGE_RUN(KraskalPrim);
-			__GARBAGE_RUN(Converter);
-			__GARBAGE_RUN(ShellQuick);
+			inline static void run(void)
+			{
+				__GARBAGE_RUN(BubbleCoctailEvenOddCombo);
+				__GARBAGE_RUN(DFSBFS);
+				__GARBAGE_RUN(DijkstraFloydWarshall);
+				__GARBAGE_RUN(InsertSelectionMerge);
+				__GARBAGE_RUN(KraskalPrim);
+				__GARBAGE_RUN(Converter);
+				__GARBAGE_RUN(ShellQuick);
+			};
 		};
-	};
-#pragma endregion
+	#pragma endregion
 #endif // __GARBAGE_EXTERN__
 #pragma endregion
 

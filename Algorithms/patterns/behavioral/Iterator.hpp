@@ -13,7 +13,7 @@ namespace Iterator
 	class IIterator
 	{
 	public:
-		virtual ~IIterator(void) = 0 {};
+		virtual ~IIterator(void) {};
 
 		virtual Type& GetNext(void) = 0;
 		virtual bool HasMore(void) const = 0;
@@ -23,7 +23,7 @@ namespace Iterator
 	class IIterableCollection
 	{
 	public:
-		virtual ~IIterableCollection(void) = 0 {};
+		virtual ~IIterableCollection(void) {};
 
 		virtual IIterator<Type>* CreateIterator(void) = 0;
 	};

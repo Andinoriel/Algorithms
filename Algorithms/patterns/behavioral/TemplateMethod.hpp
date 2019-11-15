@@ -10,7 +10,7 @@ namespace TemplateMethod
 	class AbstractTemplate
 	{
 	public:
-		virtual ~AbstractTemplate(void) = 0 {};
+		virtual ~AbstractTemplate(void) {};
 
 		virtual void TemplateMethod(void) final;
 	private:

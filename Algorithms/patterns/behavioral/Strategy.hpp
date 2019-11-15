@@ -10,7 +10,7 @@ namespace Strategy
 	class IStrategy
 	{
 	public:
-		virtual ~IStrategy(void) = 0 {};
+		virtual ~IStrategy(void) {};
 
 		virtual void Execute(void) = 0;
 	};

@@ -11,7 +11,7 @@ namespace AbstractFactory
 	class IProduct
 	{
 	public:
-		virtual ~IProduct(void) = 0 {};
+		virtual ~IProduct(void) {};
 
 		virtual void SomeOperation(void) = 0;
 	};
@@ -41,7 +41,7 @@ namespace AbstractFactory
 	class IAbstractFactory
 	{
 	public:
-		virtual ~IAbstractFactory(void) = 0 {};
+		virtual ~IAbstractFactory(void) {};
 
 		virtual IProduct* CreateProduct1(void) = 0;
 		virtual IProduct* CreateProduct2(void) = 0;

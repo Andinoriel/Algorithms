@@ -10,7 +10,7 @@ namespace Command
 	class ICommand
 	{
 	public:
-		virtual ~ICommand(void) = 0 {};
+		virtual ~ICommand(void) {};
 
 		virtual void Execute(/* Params params // if need */) = 0;
 	};
