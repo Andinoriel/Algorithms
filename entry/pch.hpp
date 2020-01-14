@@ -11,6 +11,9 @@
 #include <cstddef>
 #include <cstdlib>
 
+#define var_dump(variable) std::cout << #variable << " = [" << (variable) << "]" << std::endl;
+#define prefix_unused(variable) [[maybe_unused]] variable
+
 #pragma region garbage
 #ifdef __GARBAGE_EXTERN__
 	#define EXTERN_TEST__ extern int TEST(void);

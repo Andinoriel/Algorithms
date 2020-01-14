@@ -14,14 +14,14 @@ namespace CoR
 		virtual ~IHandler(void) {};
 
 		virtual void SetNext(IHandler* handler) = 0;
-		virtual void Handle(std::string request) = 0;
+		virtual void Handle(std::string const& request) = 0;
 	};
 
 	class BaseHandler : public IHandler
 	{
 	public:
 		virtual void SetNext(IHandler* handler) override final;
-		virtual void Handle(std::string request) override;
+		virtual void Handle(std::string const& request) override;
 	protected:
 		IHandler* next;
 	};
@@ -29,17 +29,17 @@ namespace CoR
 	class ConcreteHandler1 final : public BaseHandler
 	{
 	public:
-		virtual void Handle(std::string request) override final;
+		virtual void Handle(std::string const& request) override final;
 	};
 	class ConcreteHandler2 final : public BaseHandler
 	{
 	public:
-		virtual void Handle(std::string request) override final;
+		virtual void Handle(std::string const& request) override final;
 	};
 	class ConcreteHandler3 final : public BaseHandler
 	{
 	public:
-		virtual void Handle(std::string request) override final;
+		virtual void Handle(std::string const& request) override final;
 	};	
 
 #pragma region TEST

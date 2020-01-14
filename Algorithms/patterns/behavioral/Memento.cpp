@@ -10,22 +10,20 @@ void Memento::Originator::Restore(Memento const* snapshot)
 {
 	this->state = snapshot->GetState();
 }
-void Memento::Originator::UpdateCurrentState(std::string state)
+void Memento::Originator::UpdateCurrentState(std::string const& state)
 {
-	this->state = state;
+	this->state = state; //-V820
 }
 std::string Memento::Originator::GetCurrentState(void) const
 {
 	return this->state;
 }
 
-Memento::Originator::Memento::Memento(std::string state)
-{
-	this->state = state;
-}
+Memento::Originator::Memento::Memento(std::string state) : state(state)
+{}
 std::string Memento::Originator::Memento::GetState(void) const
 {
-	return this->state;
+	return this->state; //-V820
 }
 
 Memento::Caretaker::Caretaker(Originator* originator)

@@ -25,7 +25,7 @@ namespace Memento
 		Memento* Save(void) const;
 		void Restore(Memento const* snapshot);
 
-		void UpdateCurrentState(std::string state);
+		void UpdateCurrentState(std::string const& state);
 		std::string GetCurrentState(void) const;
 
 	private:

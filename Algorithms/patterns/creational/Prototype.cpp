@@ -32,6 +32,6 @@ void Prototype::TEST::DO_TEST(void)
 
 	ConcretePrototype* cloned = dynamic_cast<ConcretePrototype*>(existing.Clone());
 	std::cout << "\ncloned data:";
-	cloned->PrintData();
+	cloned ? cloned->PrintData() : __Empty::__null_call();
 };
 #pragma endregion

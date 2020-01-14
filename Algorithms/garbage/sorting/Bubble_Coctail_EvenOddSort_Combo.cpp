@@ -6,14 +6,14 @@
 
 namespace BubbleCoctailEvenOddCombo
 {
-	void BubbleSort(std::vector<int>& array)
+	void BubbleSort(std::vector<int>& array) //-V2009
 	{
 		for (size_t t = 0; t < array.size(); ++t)
 			for (size_t _t = 0; _t < array.size() - t - 1; ++_t)
 				if (array.at(_t + 1) < array.at(_t))
 					std::swap(array.at(_t + 1), array.at(_t));
 	};
-	void CocktailSort(std::vector<int>& array)
+	void CocktailSort(std::vector<int>& array) //-V2009
 	{
 		for (size_t l = 0, r = array.size() - 1; l < r;)
 		{
@@ -27,24 +27,24 @@ namespace BubbleCoctailEvenOddCombo
 			++l;
 		}
 	}
-	void EvenOddSort(std::vector<int>& array)
+	void EvenOddSort(std::vector<int>& array) //-V2009
 	{
 		for (size_t t = 0; t < array.size(); ++t)
 			for (size_t _t = (t % 2 == 0) ? 0 : 1; _t < array.size() - 1; _t += 2)
 				if (array.at(_t) > array.at(_t + 1))
 					std::swap(array.at(_t), array.at(_t + 1));
 	}
-	void CombSort(std::vector<int>& array)
+	void CombSort(std::vector<int>& array) //-V2009
 	{
 		size_t count = 0;
 		double coeff = 1.2473309;
 		double step = static_cast<double>(array.size() - 1);
 		while (step >= 1)
 		{
-			for (size_t t = 0; t + static_cast<size_t>(step) < array.size(); ++t)
-				if (array.at(t) > array.at(t + static_cast<size_t>(step)))
+			for (size_t t = 0; t + static_cast<size_t>(step) < array.size(); ++t) //-V2004
+				if (array.at(t) > array.at(t + static_cast<size_t>(step))) //-V2004
 				{
-					std::swap(array.at(t), array.at(t + static_cast<size_t>(step)));
+					std::swap(array.at(t), array.at(t + static_cast<size_t>(step))); //-V2004
 					++count;
 				}
 			step /= coeff;
@@ -63,13 +63,13 @@ namespace BubbleCoctailEvenOddCombo
 			}
 		}
 	}
-	void print(std::vector<int>& array)
+	void print(std::vector<int>& array) //-V2009
 	{
 		for (size_t t = 0; t < array.size(); ++t)
 			std::cout << array.at(t) << " ";
 		std::cout << "\n";
 	}
-	void randomize(std::vector<int>& array)
+	void randomize(std::vector<int>& array) //-V2009
 	{
 		array.clear();
 #ifndef _WIN64

@@ -7,7 +7,7 @@
 
 namespace ShellQuick
 {
-	void ShellSort(std::vector<ptrdiff_t>& array)
+	void ShellSort(std::vector<ptrdiff_t>& array) //-V2009
 	{
 		size_t step = array.size() / 2;
 		while (step > 0)
@@ -56,13 +56,13 @@ namespace ShellQuick
 		};
 		qSort(array, 0, array.size() - 1);
 	}
-	void print(std::vector<ptrdiff_t>& array)
+	void print(std::vector<ptrdiff_t>& array) //-V2009
 	{
 		for (size_t t = 0; t < array.size(); ++t)
 			std::cout << array.at(t) << " ";
 		std::cout << "\n";
 	};
-	void randomize(std::vector<ptrdiff_t>& array)
+	void randomize(std::vector<ptrdiff_t>& array) //-V2009
 	{
 		array.clear();
 #ifndef _WIN64

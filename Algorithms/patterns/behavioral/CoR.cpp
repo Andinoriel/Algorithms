@@ -7,7 +7,7 @@ void CoR::BaseHandler::SetNext(IHandler* handler)
 	this->next = handler;
 }
 
-void CoR::BaseHandler::Handle(std::string request)
+void CoR::BaseHandler::Handle(std::string const& request)
 {
 	if (this->next != nullptr)
 		this->next->Handle(request);
@@ -15,21 +15,21 @@ void CoR::BaseHandler::Handle(std::string request)
 		std::cout << "End of chain...\n";
 }
 
-void CoR::ConcreteHandler1::Handle(std::string request)
+void CoR::ConcreteHandler1::Handle(std::string const& request)
 {
 	if (request != "handle1")
 		BaseHandler::Handle(request);
 	else
 		std::cout << "Handler 1 request: " << request << "; chain termination...\n";
 }
-void CoR::ConcreteHandler2::Handle(std::string request)
+void CoR::ConcreteHandler2::Handle(std::string const& request)
 {
 	if (request != "handle2")
 		BaseHandler::Handle(request);
 	else
 		std::cout << "Handler 2 request: " << request << "; chain termination...\n";
 }
-void CoR::ConcreteHandler3::Handle(std::string request)
+void CoR::ConcreteHandler3::Handle(std::string const& request)
 {
 	if (request != "handle3")
 		BaseHandler::Handle(request);

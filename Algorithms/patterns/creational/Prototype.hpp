@@ -8,6 +8,12 @@
 
 namespace Prototype
 {
+	class __Empty
+	{
+	public:
+		inline static void __null_call(void) noexcept {};
+	};
+
 #pragma region IPrototype
 	class IPrototype
 	{

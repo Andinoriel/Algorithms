@@ -5,7 +5,7 @@
 #pragma region ConcreteBuilder1
 void Builder::ConcreteBuilder1::Reset(void) noexcept
 {
-	this->concrete_builder1_result = std::string();
+	this->concrete_builder1_result.clear(); // V815
 }
 void Builder::ConcreteBuilder1::BuilderStepFirst(void)
 {

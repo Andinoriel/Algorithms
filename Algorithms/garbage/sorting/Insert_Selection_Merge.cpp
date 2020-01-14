@@ -6,13 +6,13 @@
 
 namespace InsertSelectionMerge
 {
-	void InsertSort(std::vector<int>& array)
+	void InsertSort(std::vector<int>& array) //-V2009
 	{
 		for (size_t t = 1; t < array.size(); ++t)
 			for (size_t _t = t; _t > 0 && array.at(_t - 1) > array.at(_t); --_t)
 				std::swap(array.at(_t - 1), array.at(_t));
 	};
-	void SelectionSort(std::vector<int>& array)
+	void SelectionSort(std::vector<int>& array) //-V2009
 	{
 		for (size_t t = 0; t < array.size() - 1; ++t)
 		{
@@ -27,7 +27,7 @@ namespace InsertSelectionMerge
 			}
 		}
 	}
-	void MergeSort(std::vector<int>& array)
+	void MergeSort(std::vector<int>& array) //-V2009
 	{
 		if (array.size() <= 1)
 			return;
@@ -61,13 +61,13 @@ namespace InsertSelectionMerge
 		};
 		array = Merge(left, right);
 	}
-	void print(std::vector<int>& array)
+	void print(std::vector<int>& array) //-V2009
 	{
 		for (size_t t = 0; t < array.size(); ++t)
 			std::cout << array.at(t) << " ";
 		std::cout << "\n";
 	};
-	void randomize(std::vector<int>& array)
+	void randomize(std::vector<int>& array) //-V2009
 	{
 		array.clear();
 #ifndef _WIN64
