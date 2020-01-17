@@ -7,12 +7,19 @@
 #include <any>
 #include <utility>
 #include <memory>
+#include <string>
 
 #include <cstddef>
 #include <cstdlib>
 
 #define var_dump(variable) std::cout << #variable << " = [" << (variable) << "]" << std::endl;
 #define prefix_unused(variable) [[maybe_unused]] variable
+
+[[noreturn]] inline static volatile void __panic(std::string const& message) noexcept
+{
+	std::cerr << message << std::endl;
+	std::exit(EXIT_FAILURE);
+};
 
 #pragma region garbage
 #ifdef __GARBAGE_EXTERN__

@@ -64,10 +64,10 @@
 
 	namespace AlmostReflectionTypeTraits
 	{
-		// pod field count
-		// cl /EHsc /std:c++[17|14]
 		inline namespace
 		{
+			// pod(c++17|14) field count
+			// cl /EHsc /std:c++[17|14]
 			inline namespace pod_count
 			{
 				class pod_reflection final
@@ -116,7 +116,7 @@
 				};
 			};
 
-			inline namespace
+			inline namespace foo_or_bar
 			{
 				template <typename Type>
 				auto call_foo_or_bar(Type const& obj) -> decltype(obj.foo())
