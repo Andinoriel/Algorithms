@@ -25,6 +25,14 @@ namespace Singleton
 				PureSingleton<SingleInstance>::currentInstance = new SingleInstance();
 			return PureSingleton<SingleInstance>::currentInstance;
 		};
+		template<typename... Args>
+		[[nodiscard]] static SingleInstance* const GetInstance(Args... args)
+		{
+			if (PureSingleton<SingleInstance>::currentInstance == nullptr)
+				// sync threads if multi-threaded 
+				PureSingleton<SingleInstance>::currentInstance = new SingleInstance(args...);
+			return PureSingleton<SingleInstance>::currentInstance;
+		};
 		static void Dispose(void) noexcept
 		{
 			delete PureSingleton<SingleInstance>::currentInstance;
@@ -52,9 +60,16 @@ namespace Singleton
 			static SingleInstance currentInstance;
 			return currentInstance;
 		};
+		template<typename... Args>
+		[[nodiscard]] static SingleInstance& GetInstance(Args... args)
+		{
+			static SingleInstance currentInstance(args...);
+			return currentInstance;
+		};
 	};
 #pragma endregion
 
+/* just for classes with default-implemented contructor */
 #pragma region MeyersSingletonWithoutLazyInit
 	template <typename SingleInstance>
 	class MeyersSingletonWithoutLazyInit
