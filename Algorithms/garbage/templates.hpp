@@ -7,6 +7,8 @@
 #include <string_view>
 #include <utility>
 
+#ifdef __TEMPORARY_UNAVAILABLE__
+
 #pragma region __RTTR_TEST__
 #ifndef __RTTR_TEST_OFF__
 
@@ -59,6 +61,8 @@
 
 #endif // __RTTR_TEST_OFF__
 #pragma endregion // __RTTR_TEST__
+
+#endif // __TEMPORARY_UNAVAILABLE__
 
 #pragma region type_traits & templates
 

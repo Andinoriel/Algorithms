@@ -1,0 +1,6 @@
+[submodule "3rd_party/sfml"]
+	path = 3rd_party/sfml
+	url = https://github.com/SFML/SFML.git
+[submodule "3rd_party/rttr"]
+	path = 3rd_party/rttr
+	url = https://github.com/rttrorg/rttr.git

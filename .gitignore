@@ -348,5 +348,5 @@ ASALocalRun/
 ProjectRunner/
 *.lib
 
-.build/
-CMakeFiles/
+build/
+.vscode/

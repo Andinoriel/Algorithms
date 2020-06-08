@@ -105,7 +105,7 @@ namespace Iterator
 	template<typename Type>
 	inline bool ConcreteIterator<Type>::HasMore(void) const
 	{
-		return this->iteration_state >= this->collection->collection_size or this->collection->collection == nullptr? false : true;
+		return this->iteration_state >= this->collection->collection_size || this->collection->collection == nullptr? false : true;
 	}
 #pragma endregion
 

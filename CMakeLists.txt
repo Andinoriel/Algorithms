@@ -1,25 +1,26 @@
 cmake_minimum_required(VERSION 3.8)
 
+enable_language(CXX)
 set(CMAKE_CXX_STANDARD 17)
-
-set(DEBUG_OPTIONS -Wall)
+set(DEBUG_OPTIONS -m64 -Wall -Wextra -pedantic -Werror)
 set(RELEASE_OPTIONS -m64 -O2)
 
-project(tester)
+project(algorithms)
+add_subdirectory(3rd_party/sfml)
 
-# --------------------------------------------------------------------------------------------------------------------------
+add_definitions(-DDISABLE_OLD_EP)
 
-add_executable(main)
-target_sources(main PRIVATE
-	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/numeral_system_converter.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sorting/Bubble_Coctail_EvenOddSort_Combo.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sorting/Insert_Selection_Merge.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sorting/Shell_Quick.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/graph_theory/DFS_BFS.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/graph_theory/Dijkstra_FloydWarshall.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/graph_theory/Kraskal_Prim.cpp
-	
-	
+add_executable(patterns-t)
+add_executable(garbage-t-wht-sfml)
+add_executable(garbage-t-w-sfml)
+add_executable(templates-t)
+
+# excluded from any target:
+#   - Algorithms/garbage/Feature20.cpp
+#   - Algorithms/garbage/boost-serialization.cpp
+#   - Algorithms/garbage/re-asm/taicall/...
+
+target_sources(patterns-t PRIVATE	
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/patterns/creational/AbstractFactory.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/patterns/creational/Builder.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/patterns/creational/FactoryMethod.cpp
@@ -41,14 +42,39 @@ target_sources(main PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/patterns/behavioral/State.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/patterns/behavioral/Strategy.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/patterns/behavioral/TemplateMethod.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/patterns/behavioral/Visitor.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/patterns/behavioral/Visitor.cpp	
+
 	
-	
-	${CMAKE_CURRENT_SOURCE_DIR}/entry/main.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/main-patterns.cpp
 )
-target_compile_definitions(main PUBLIC -D__RTTR_TEST_OFF__)
+target_sources(garbage-t-wht-sfml PRIVATE
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/numeral-system-converter.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sorting/Bubble-Coctail-EvenOddSort-Combo.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sorting/Insert-Selection-Merge.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sorting/Shell-Quick.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/graph-theory/DFS-BFS.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/graph-theory/Dijkstra-FloydWarshall.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/graph-theory/Kraskal-Prim.cpp
 
-target_compile_options(main PUBLIC "$<$<CONFIG:DEBUG>:${DEBUG_OPTIONS}>")
-target_compile_options(main PUBLIC "$<$<CONFIG:RELEASE>:${RELEASE_OPTIONS}>")
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/main-garbage.cpp
+)
+target_sources(garbage-t-w-sfml PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/RandomF.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/Circle.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/Square.cpp
 
-# --------------------------------------------------------------------------------------------------------------------------
+    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/demo1.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/demo2.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/main-sfml.cpp
+)
+target_sources(templates-t PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/main-templates.cpp
+)
+
+target_link_libraries(garbage-t-w-sfml sfml-graphics)
+# target_link_libraries(garbage-t-w-sfml sfml-audio)
+
+
+add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_OPTIONS}>")
+add_compile_options("$<$<CONFIG:RELEASE>:${RELEASE_OPTIONS}>")
