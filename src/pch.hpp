@@ -13,40 +13,37 @@
 #include <cstddef>
 #include <cstdlib>
 
-#pragma region magic_1
-	#define prefix_safe_call_base_expression(default_value, object_pointer, method_with_arguments)\
-		((pointer) ? ((pointer)->method_with_arguments) : (default_value))
+#pragma region
+// auto some_pointer = ...;
+// if (some_pointer)
+// some_pointer->call_some_method();
+//
+// auto some_pointer = ...;
+// prefix_safe_call_void(some_pointer, call_some_method());
+//
+// auto somePointer = ...;
+// auto x = prefix_safe_call(0, some_pointer, call_some_method());
 
-	#define prefix_safe_call(default_value, object_pointer, method_with_arguments)							\
-		[&](decltype((object_pointer))&& pointer)															\
-			-> decltype(prefix_safe_call_base_expression(default_value, pointer, method_with_arguments))	\
-		{																									\
-			return prefix_safe_call_base_expression(default_value, pointer, method_with_arguments);			\
-		}																									\
-		(object_pointer)
+#define prefix_safe_call_base_expression(default_value, object_pointer, method_with_arguments)\
+	((pointer) ? ((pointer)->method_with_arguments) : (default_value))
 
-	#define prefix_safe_call_void(object_pointer, method_with_arguments)	\
-		[&](decltype((object_pointer))&& pointer)							\
-		{																	\
-			if (pointer)													\
-				(pointer->methodWithArguments);								\
-		}																	\
-		(object_pointer)
+#define prefix_safe_call(default_value, object_pointer, method_with_arguments)							\
+	[&](decltype((object_pointer))&& pointer)															\
+		-> decltype(prefix_safe_call_base_expression(default_value, pointer, method_with_arguments))	\
+	{																									\
+		return prefix_safe_call_base_expression(default_value, pointer, method_with_arguments);			\
+	}																									\
+	(object_pointer)
 
-/*
-	auto some_pointer = ...;
-	if (some_pointer)
-	some_pointer->call_some_method();
+#define prefix_safe_call_void(object_pointer, method_with_arguments)	\
+	[&](decltype((object_pointer))&& pointer)							\
+	{																	\
+		if (pointer)													\
+			(pointer->methodWithArguments);								\
+	}																	\
+	(object_pointer)
 
-	auto some_pointer = ...;
-	prefix_safe_call_void(some_pointer, call_some_method());
-
-	auto somePointer = ...;
-	auto x = prefix_safe_call(0, some_pointer, call_some_method());
-*/
-
-
-#pragma endregion // magic_1
+#pragma endregion
 
 #define var_dump(variable) std::cout << #variable << " = [" << (variable) << "]" << std::endl;
 #define prefix_unused(variable) [[maybe_unused]] variable
