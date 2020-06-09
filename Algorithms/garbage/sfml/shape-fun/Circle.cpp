@@ -11,20 +11,20 @@ void Circle::setColor(unsigned R, unsigned G, unsigned B)
 	this->circle.setFillColor(sf::Color(R, G, B));
 };
 
-Circle::Circle()
+Circle::Circle(void)
 {
-	this->circle.setRadius(rangeSize(random));
-	this->angle = rangeAngle(random);
-	this->speed = rangeSpeed(random);
+	this->circle.setRadius(rangeSize(mt19937_random));
+	this->angle = rangeAngle(mt19937_random);
+	this->speed = rangeSpeed(mt19937_random);
 	this->setPosition
 	(
 		static_cast<float>(1280.f / 2.f), 
 		static_cast<float>(720.f / 2.f)
 	);
-	this->setColor(rangeColor(random), rangeColor(random), rangeColor(random));
+	this->setColor(rangeColor(mt19937_random), rangeColor(mt19937_random), rangeColor(mt19937_random));
 };
 
-void Circle::change()
+void Circle::change(void)
 {
 	this->setPosition
 	(
@@ -34,7 +34,7 @@ void Circle::change()
 };
 void Circle::changeColor(void)
 {
-	this->setColor(rangeColor(random), rangeColor(random), rangeColor(random));
+	this->setColor(rangeColor(mt19937_random), rangeColor(mt19937_random), rangeColor(mt19937_random));
 };
 void Circle::draw(sf::RenderWindow const& window)
 {

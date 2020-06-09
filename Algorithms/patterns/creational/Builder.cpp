@@ -28,7 +28,7 @@ std::string& Builder::ConcreteBuilder1::GetResult(void) noexcept
 #pragma region ConcreteBuilder2
 void Builder::ConcreteBuilder2::Reset(void) noexcept
 {
-	this->concrete_builder2_result = NULL;
+	this->concrete_builder2_result = ptrdiff_t(0);
 }
 void Builder::ConcreteBuilder2::BuilderStepFirst(void)
 {

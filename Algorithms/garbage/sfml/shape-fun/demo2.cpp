@@ -6,12 +6,11 @@
 
 int demo2(void)
 {
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "demo2", sf::Style::Fullscreen);
-	window.setMouseCursorVisible(false);
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "demo2", sf::Style::Titlebar | sf::Style::Close);
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(60);
 
-	random.seed(rd());
+	mt19937_random.seed(rd());
 
 	Shape* array[100];
 	for (size_t t = 0; t < 50; ++t)

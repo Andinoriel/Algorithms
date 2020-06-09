@@ -4,10 +4,10 @@
 
 #include <random>
 
-extern std::mt19937 random;
+extern std::mt19937 mt19937_random;
 extern std::random_device rd;
 
-extern std::uniform_int_distribution<unsigned> rangeColor;
+extern std::uniform_int_distribution<short> rangeColor;
 extern std::uniform_real_distribution<float> rangeSize;
 extern std::uniform_real_distribution<float> rangeAngle;
 extern std::uniform_real_distribution<float> rangeSpeed;

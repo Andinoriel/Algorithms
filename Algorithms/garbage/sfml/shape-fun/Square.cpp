@@ -13,16 +13,16 @@ void Square::setColor(unsigned R, unsigned G, unsigned B)
 
 Square::Square(void)
 {
-	float tmp = rangeSize(random);
+	float tmp = rangeSize(mt19937_random);
 	this->square.setSize(sf::Vector2f(tmp, tmp));
-	this->angle = rangeAngle(random);
-	this->speed = rangeSpeed(random);
+	this->angle = rangeAngle(mt19937_random);
+	this->speed = rangeSpeed(mt19937_random);
 	this->setPosition
 	(
 		static_cast<float>(1280.f / 2.f), 
 		static_cast<float>(720.f / 2.f)
 	);
-	this->setColor(rangeColor(random), rangeColor(random), rangeColor(random));
+	this->setColor(rangeColor(mt19937_random), rangeColor(mt19937_random), rangeColor(mt19937_random));
 };
 
 void Square::change(void)
@@ -35,7 +35,7 @@ void Square::change(void)
 };
 void Square::changeColor(void)
 {
-	this->setColor(rangeColor(random), rangeColor(random), rangeColor(random));
+	this->setColor(rangeColor(mt19937_random), rangeColor(mt19937_random), rangeColor(mt19937_random));
 };
 void Square::draw(sf::RenderWindow const& window)
 {

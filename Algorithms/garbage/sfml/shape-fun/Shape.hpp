@@ -18,7 +18,7 @@ protected:
 	virtual void setColor(unsigned R, unsigned G, unsigned B) = 0;
 public:
 	Shape(void) = default;
-	virtual ~Shape(void) = 0 {};
+	virtual ~Shape(void) {};
 
 	virtual void change(void) = 0;
 	virtual void changeColor() = 0;
