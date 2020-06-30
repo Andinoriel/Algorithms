@@ -1,10 +1,9 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
-#include "Circle.hpp"
-#include "Square.hpp"
+#include "./pch.hpp"
 
-int demo1(void)
+int sfml_shape_fun::demo1(void)
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "demo1", sf::Style::Titlebar | sf::Style::Close);
 	window.setMouseCursorVisible(false);

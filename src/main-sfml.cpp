@@ -6,8 +6,11 @@
 #include "./pch.hpp"
 
 #pragma region sfml/shape_fun
-extern int demo1(void);
-extern int demo2(void);
+inline namespace sfml_shape_fun 
+{
+    extern int demo1(void);
+    extern int demo2(void);
+};
 #pragma endregion sfml/shape_fun
 
 int main(int argc, char** argv)
