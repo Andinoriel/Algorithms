@@ -7,18 +7,28 @@ set(RELEASE_OPTIONS -m64 -O2)
 
 project(algorithms)
 add_subdirectory(3rd_party/sfml)
+add_subdirectory(3rd_party/Box2D-cmake)
 
 add_definitions(-DDISABLE_OLD_EP)
+
+# ======================================== EXECUTABLES ======================================== 			
 
 add_executable(patterns-t)
 add_executable(garbage-t-wht-sfml)
 add_executable(garbage-t-w-sfml)
 add_executable(templates-t)
+add_executable(box2d-sfml-t)
+
+# =============================================================================================
+
+
+# ======================================== TARGETS=======================================
 
 # excluded from any target:
-#   - Algorithms/garbage/Feature20.cpp
-#   - Algorithms/garbage/boost-serialization.cpp
+#   - Algorithms/garbage/__oth/Feature20.cpp
+#   - Algorithms/garbage/__oth/boost-serialization.cpp
 #   - Algorithms/garbage/re-asm/taicall/...
+#	...
 
 target_sources(patterns-t PRIVATE	
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/patterns/creational/AbstractFactory.cpp
@@ -48,7 +58,7 @@ target_sources(patterns-t PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}/src/main-patterns.cpp
 )
 target_sources(garbage-t-wht-sfml PRIVATE
-	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/numeral-system-converter.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/__oth/numeral-system-converter.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sorting/Bubble-Coctail-EvenOddSort-Combo.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sorting/Insert-Selection-Merge.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sorting/Shell-Quick.cpp
@@ -71,10 +81,23 @@ target_sources(garbage-t-w-sfml PRIVATE
 target_sources(templates-t PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main-templates.cpp
 )
+target_sources(box2d-sfml-t PRIVATE
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/box2d-sfml-tests/main.cpp
+)
+
+# =======================================================================================
+
+
+# ======================================== LINKING LIB ========================================			
 
 target_link_libraries(garbage-t-w-sfml sfml-graphics)
 # target_link_libraries(garbage-t-w-sfml sfml-audio)
 
+target_link_libraries(box2d-sfml-t sfml-graphics)
+# target_link_libraries(box2d-sfml-t sfml-audio)
+target_link_libraries(box2d-sfml-t tobanteGaming::Box2D)
+
+# =============================================================================================
 
 add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_OPTIONS}>")
 add_compile_options("$<$<CONFIG:RELEASE>:${RELEASE_OPTIONS}>")

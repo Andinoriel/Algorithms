@@ -4,3 +4,6 @@
 [submodule "3rd_party/rttr"]
 	path = 3rd_party/rttr
 	url = https://github.com/rttrorg/rttr.git
+[submodule "3rd_party/Box2D-cmake"]
+	path = 3rd_party/Box2D-cmake
+	url = https://github.com/tobanteGaming/Box2D-cmake.git

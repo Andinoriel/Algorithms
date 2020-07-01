@@ -5,7 +5,7 @@
 
 #include "./pch.hpp"
 
-#include "../Algorithms/garbage/templates.hpp"
+#include "../Algorithms/garbage/__oth/templates.hpp"
 
 int main(void)
 {
