@@ -18,11 +18,12 @@ add_executable(garbage-t-wht-sfml)
 add_executable(garbage-t-w-sfml)
 add_executable(templates-t)
 add_executable(box2d-sfml-t)
+add_executable(crypto-t)
 
 # =============================================================================================
 
 
-# ======================================== TARGETS=======================================
+# ======================================== TARGETS =======================================
 
 # excluded from any target:
 #   - Algorithms/garbage/__oth/Feature20.cpp
@@ -83,6 +84,11 @@ target_sources(templates-t PRIVATE
 )
 target_sources(box2d-sfml-t PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/box2d-sfml-tests/main.cpp
+)
+target_sources(crypto-t PRIVATE
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/crypto/md5.c
+
+	${CMAKE_CURRENT_SOURCE_DIR}/src/main-crypto.c
 )
 
 # =======================================================================================
