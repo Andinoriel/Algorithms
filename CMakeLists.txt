@@ -1,17 +1,20 @@
 cmake_minimum_required(VERSION 3.8)
 
-enable_language(CXX)
-set(CMAKE_CXX_STANDARD 17)
-set(DEBUG_OPTIONS -m64 -Wall -Wextra -pedantic -Werror)
-set(RELEASE_OPTIONS -m64 -O2)
-
 project(algorithms)
+
 add_subdirectory(3rd_party/sfml)
 add_subdirectory(3rd_party/Box2D-cmake)
 
-add_definitions(-DDISABLE_OLD_EP)
+option (FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." FALSE)
+if(${FORCE_COLORED_OUTPUT})
+    if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+       add_compile_options(-fdiagnostics-color=always)
+    elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+       add_compile_options(-fcolor-diagnostics)
+    endif()
+endif()
 
-# ======================================== EXECUTABLES ======================================== 			
+# ======================================== TARGETS ======================================== 			
 
 add_executable(patterns-t)
 add_executable(garbage-t-wht-sfml)
@@ -20,10 +23,17 @@ add_executable(templates-t)
 add_executable(box2d-sfml-t)
 add_executable(crypto-t)
 
-# =============================================================================================
+target_compile_features(patterns-t 			PUBLIC cxx_std_17)
+target_compile_features(garbage-t-wht-sfml 	PUBLIC cxx_std_17)
+target_compile_features(garbage-t-w-sfml 	PUBLIC cxx_std_17)
+target_compile_features(templates-t 		PUBLIC cxx_std_17)
+target_compile_features(box2d-sfml-t 		PUBLIC cxx_std_17)
+target_compile_features(crypto-t 			PUBLIC cxx_std_17)
+
+# =========================================================================================
 
 
-# ======================================== TARGETS =======================================
+# ======================================== SOURCES =======================================
 
 # excluded from any target:
 #   - Algorithms/garbage/__oth/Feature20.cpp
@@ -104,6 +114,3 @@ target_link_libraries(box2d-sfml-t sfml-graphics)
 target_link_libraries(box2d-sfml-t tobanteGaming::Box2D)
 
 # =============================================================================================
-
-add_compile_options("$<$<CONFIG:DEBUG>:${DEBUG_OPTIONS}>")
-add_compile_options("$<$<CONFIG:RELEASE>:${RELEASE_OPTIONS}>")
