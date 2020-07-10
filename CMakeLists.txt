@@ -28,7 +28,7 @@ target_compile_features(garbage-t-wht-sfml 	PUBLIC cxx_std_17)
 target_compile_features(garbage-t-w-sfml 	PUBLIC cxx_std_17)
 target_compile_features(templates-t 		PUBLIC cxx_std_17)
 target_compile_features(box2d-sfml-t 		PUBLIC cxx_std_17)
-target_compile_features(crypto-t 			PUBLIC cxx_std_17)
+target_compile_features(crypto-t 			PUBLIC c_std_11)
 
 # =========================================================================================
 
@@ -80,17 +80,17 @@ target_sources(garbage-t-wht-sfml PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main-garbage.cpp
 )
 target_sources(garbage-t-w-sfml PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/RandomF.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/Circle.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/Square.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/RandomF.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/Circle.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/Square.cpp
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/demo1.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/demo2.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/demo1.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/sfml/shape-fun/demo2.cpp
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/main-sfml.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/main-sfml.cpp
 )
 target_sources(templates-t PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/main-templates.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/main-templates.cpp
 )
 target_sources(box2d-sfml-t PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/garbage/box2d-sfml-tests/main.cpp

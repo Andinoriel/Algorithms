@@ -1,29 +1,74 @@
 {
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
     "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceRoot}"
+    },
     "tasks": [
         {
+            "label": "clean build dir",
             "type": "shell",
-            "label": "g++ build active file",
-            "command": "/usr/bin/g++",
+            "command": "rm",
+            "args": ["-r", "./build/*"],
+            "problemMatcher": []
+        },
+        {
+            "label": "run cmake with clang & Ninja",
+            "type": "shell",
+            "command": "cmake",
             "args": [
-                "-m64",
-                "-O2",
-                "-DNDEBUG",
-                "-std=c++17",
-                "-Wall",
-                "-Wno-unknown-pragmas",
-                // "-g",
-                "${file}",
-                "-o",
-                "${workspaceFolder}/.build/${fileBasenameNoExtension}.out"
+                "-B", "./build",
+                "-G", "Ninja",
+                "-DCMAKE_C_COMPILER=clang", "-DCMAKE_CXX_COMPILER=clang++", "-DFORCE_COLORED_OUTPUT=TRUE",
+                "."
             ],
+            "dependsOn":["clean build dir"],
+            "problemMatcher": []
+        },
+        {
+            "label": "run cmake build with gcc & make",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B", "./build",
+                "-G", "Unix Makefiles",
+                "-DCMAKE_C_COMPILER=gcc", "-DCMAKE_CXX_COMPILER=g++", "-DFORCE_COLORED_OUTPUT=TRUE",
+                "."
+            ],
+            "dependsOn":["clean build dir"],
+            "problemMatcher": []
+        },
+        {
+            "label": "build all targets",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build", ".",
+                "--target", "all",
+                "--parallel", "6"
+            ],
+            "group": "build",
             "options": {
-                "cwd": "/usr/bin"
+                "cwd": "${workspaceRoot}/build"
             },
-            "problemMatcher": [
-                "$gcc"
+            "problemMatcher": []
+        },
+        {
+            "label": "clean and build all targets",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build", ".",
+                "--target", "all",
+                "--parallel", "6",
+                "--clean-first"
             ],
-            "group": "build"
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "problemMatcher": []
         }
     ]
 }
